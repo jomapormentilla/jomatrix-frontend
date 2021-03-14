@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { fetchPosts } from '../actions/postActions'
 
 import Post from './Post'
+import PostSearch from './PostSearch'
+import PostSort from './PostSort'
 
 class PostsContainer extends React.Component {
     componentDidMount(){
@@ -18,9 +20,11 @@ class PostsContainer extends React.Component {
     }
 
     render(){
+        console.log(this.props.posts)
         return(
-            <div>
-                PostsContainer
+            <div className="postsContainer">
+                <PostSearch />
+                <PostSort />
                 { this.renderPosts() }
             </div>
         )

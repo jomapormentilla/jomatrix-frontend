@@ -5,8 +5,14 @@ class Header extends React.Component {
     render(){
         return(
             <div className="header">
-                <NavLink to="/">Home</NavLink>
-                <NavLink to="/profile">Profile</NavLink>
+                <div>
+                    [ JOMATRIX LOGO ]
+                </div>
+
+                <div>
+                    <NavLink to="/">Home</NavLink>
+                    <NavLink to="/profile">Profile</NavLink>
+                </div>
             </div>
         )
     }

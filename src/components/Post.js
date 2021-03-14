@@ -3,7 +3,7 @@ import React from 'react'
 class Post extends React.Component {
     render(){
         return(
-            <div>
+            <div className="post">
                 { this.props.post.title }
                 <br />
                 By: { this.props.author.first_name }
