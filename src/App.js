@@ -1,25 +1,40 @@
-import logo from './logo.svg';
+import React from 'react'
 import './App.css';
+import { connect } from 'react-redux'
+import { fetchUsers } from './actions/userActions'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Header from './components/Header'
+import Login from './components/Login'
+import Profile from './components/Profile'
+import PostsContainer from './components/PostsContainer'
+
+class App extends React.Component {
+  componentDidMount(){
+    this.props.fetchUsers()
+  }
+
+  render(){
+    console.log(this.props.users)
+    return (
+      <div className="App">
+        <Router>
+          <Route exact path="/">
+            <Login />
+          </Route>
+          <Route path="/feed">
+            <Header />
+            <PostsContainer />
+          </Route>
+          <Route path="/profile">
+            <Profile />
+          </Route>
+        </Router>
+      </div>
+    );
+  }
 }
 
-export default App;
+const mapStateToProps = state => ({ users: state.users })
+
+export default connect(mapStateToProps, { fetchUsers })(App)
