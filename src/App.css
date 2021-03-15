@@ -12,11 +12,11 @@ body, html {
 .header {
     display: flex;
     position: fixed;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     width: 100%;
     height: 40px;
-    background-color: #777;
+    background-color: #333;
 }
 
 .header > div {
@@ -24,7 +24,7 @@ body, html {
 }
 
 .header > div > a {
-    margin: 5px;
+    margin: 10px;
     text-decoration: none;
     color: #fff;
 }
@@ -49,8 +49,16 @@ body, html {
         outline: 0;
     }
 
-    .login button {
+.chat,
+.profile,
+.settings {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
+    .profile > div {
+        width: 450px;
     }
 
 .postsContainer {
@@ -60,19 +68,29 @@ body, html {
     margin-bottom: 50px;
 }
 
-.postForm {
+.postForm,
+.chat > div,
+.profile > div,
+.settings > div {
     margin-top: 50px;
 }
 
-.postForm, .postSort, .postsLoadMore {
+.postForm,
+.postSort,
+.postsLoadMore {
     height: 40px;
 }
 
-.postSort, .post, .postsLoadMore {
+.postSort,
+.post,
+.postsLoadMore {
     margin-top: 10px;
 }
 
-.postForm, .postSort, .post, .postsLoadMore {
+.postForm,
+.postSort,
+.post,
+.postsLoadMore {
     border: solid 1px #aaa;
     border-radius: 5px;
     background-color: #fff;
@@ -94,7 +112,7 @@ body, html {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 105px;
+    height: 95px;
 }
 
 .commentForm {
@@ -133,3 +151,8 @@ body, html {
     background-color: #000;
     color: #fff;
 }
+
+    .footer a {
+        color: #fff;
+        text-decoration: none;
+    }

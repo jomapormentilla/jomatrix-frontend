@@ -22,9 +22,9 @@ class CommentsContainer extends React.Component {
     render(){
         return(
             <div className="commentsContainer">
-                <div style={{ padding: '10px' }}>
-                    { this.renderComments() }
+                <div style={{ padding: '0px 10px' }}>
                     <span style={{ color: '#aaa' }}>View Comments</span>
+                    { this.renderComments() }
                 </div>
                 <CommentForm />
             </div>

@@ -23,18 +23,17 @@ class PostsContainer extends React.Component {
     }
 
     render(){
-        console.log(this.props.posts)
         return(
             <div className="postsContainer">
                 <PostForm />
                 <PostSort />
-                { this.renderPosts() }
+                { !!this.props.loading ? <h1>Loading...</h1> : this.renderPosts() }
                 <PostsLoadMore />
             </div>
         )
     }
 }
 
-const mapStateToProps = state => ({ posts: state.posts, users: state.users })
+const mapStateToProps = state => ({ posts: state.posts, users: state.users, loading: state.loading })
 
 export default connect(mapStateToProps, { fetchUsers, fetchPosts })(PostsContainer)

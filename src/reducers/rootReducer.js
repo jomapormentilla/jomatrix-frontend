@@ -1,7 +1,8 @@
 const reducer = (state = {
     users: [],
     posts: [],
-    comments: []
+    comments: [],
+    loading: false
 }, action) => {
     switch (action.type) {
         case 'GET_USERS':

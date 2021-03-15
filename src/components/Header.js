@@ -5,13 +5,15 @@ class Header extends React.Component {
     render(){
         return(
             <div className="header">
-                <div>
+                <div style={{ color: '#fff' }}>
                     [ JOMATRIX LOGO ]
                 </div>
 
                 <div>
-                    <NavLink to="/"><i className="bi-house" style={{ fontSize: '20px' }}></i></NavLink>
+                    <NavLink to="/feed"><i className="bi-house" style={{ fontSize: '20px' }}></i></NavLink>
+                    <NavLink to="/chat"><i className="bi-chat" style={{ fontSize: '20px' }}></i></NavLink>
                     <NavLink to="/profile"><i className="bi-person-circle" style={{ fontSize: '20px' }}></i></NavLink>
+                    <NavLink to="/settings"><i className="bi-gear" style={{ fontSize: '20px' }}></i></NavLink>
                 </div>
             </div>
         )
