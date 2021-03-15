@@ -1,15 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css");
 
 body, html {
     margin: 0;
     padding: 0;
-    font-size: 14px;
+    font-size: 12px;
     font-family: 'Noto Sans', sans-serif;
     background-color: #ddd;
 }
 
 .header {
     display: flex;
+    position: fixed;
     justify-content: space-between;
     align-items: center;
     width: 100%;
@@ -31,21 +33,71 @@ body, html {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 50px;
 }
 
-.postSearch, .postSort, .post {
+.postForm {
+    margin-top: 50px;
+}
+
+.postForm, .postSort {
+    height: 40px;
+}
+
+.postSort, .post {
     margin-top: 10px;
+}
+
+.postForm, .postSort, .post {
     border: solid 1px #aaa;
     border-radius: 5px;
-    padding: 10px;
     background-color: #fff;
-    width: 500px;
-    height: 30px;
+    width: 450px;
 }
 
 .post {
-    height: 400px;
+    height: 650px;
+    overflow-x: hidden;
 }
+
+.postContent {
+    width: 450px;
+    height: 450px;
+    background-color: #777;
+}
+
+.commentsContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 105px;
+}
+
+.commentForm {
+    justify-self: flex-end;
+    border-top: solid 1px #aaa;
+}
+
+    .commentForm textarea {
+        width: 98%;
+        height: 30px;
+        border: none;
+        padding: 5px 10px;
+        overflow-wrap: break-word;
+        color: #333;
+        font-family: 'Noto Sans', sans-serif;
+        resize: none;
+    }
+
+    .commentForm textarea:focus,
+    .commentForm input:focus {
+        outline: 0;
+    }
+
+    .commentForm input {
+        border: none;
+        background: none;
+    }
 
 .footer {
     display: flex;
@@ -54,7 +106,7 @@ body, html {
     justify-content: center;
     align-items: center;
     font-size: 12px;
-    width: 100vh;
+    width: 100%;
     height: 30px;
     background-color: #000;
     color: #fff;

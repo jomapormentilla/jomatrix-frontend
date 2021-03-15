@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { fetchPosts } from '../actions/postActions'
 
 import Post from './Post'
-import PostSearch from './PostSearch'
+import PostForm from './PostForm'
 import PostSort from './PostSort'
 
 class PostsContainer extends React.Component {
@@ -23,7 +23,7 @@ class PostsContainer extends React.Component {
         console.log(this.props.posts)
         return(
             <div className="postsContainer">
-                <PostSearch />
+                <PostForm />
                 <PostSort />
                 { this.renderPosts() }
             </div>
