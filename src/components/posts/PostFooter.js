@@ -2,6 +2,7 @@ import React from 'react'
 
 class PostFooter extends React.Component {
     render(){
+        console.log(this.props.post)
         return(
             <div style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -15,6 +16,7 @@ class PostFooter extends React.Component {
                 <div style={{ padding: '0px 10px' }}>
                     <span style={{ fontWeight: '900' }}>{ !!this.props.author ? this.props.author.first_name : null }</span> &nbsp;
                     <span style={{ color: '#777' }}>{ this.props.post.title }</span>
+                    <br />
                 </div>
             </div>
         )

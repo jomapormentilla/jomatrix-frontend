@@ -9,7 +9,7 @@ class Post extends React.Component {
     render(){
         return(
             <div className="post">
-                <PostHeader author={ this.props.author } />
+                <PostHeader post={ this.props.post } author={ this.props.author } />
                 <PostContent content={ this.props.post.content } />
                 <PostFooter post={ this.props.post } author={ this.props.author } />
                 
