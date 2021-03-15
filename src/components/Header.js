@@ -10,8 +10,8 @@ class Header extends React.Component {
                 </div>
 
                 <div>
-                    <NavLink to="/">Home</NavLink>
-                    <NavLink to="/profile">Profile</NavLink>
+                    <NavLink to="/"><i className="bi-house" style={{ fontSize: '20px' }}></i></NavLink>
+                    <NavLink to="/profile"><i className="bi-person-circle" style={{ fontSize: '20px' }}></i></NavLink>
                 </div>
             </div>
         )

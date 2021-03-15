@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { fetchComments } from '../actions/commentActions'
+import { fetchComments } from '../../actions/commentActions'
 
 import Comment from './Comment'
 import CommentForm from './CommentForm'

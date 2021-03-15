@@ -1,13 +1,16 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { fetchPosts } from '../actions/postActions'
+import { fetchUsers } from '../../actions/userActions'
+import { fetchPosts } from '../../actions/postActions'
 
 import Post from './Post'
 import PostForm from './PostForm'
 import PostSort from './PostSort'
+import PostsLoadMore from './PostsLoadMore'
 
 class PostsContainer extends React.Component {
     componentDidMount(){
+        this.props.fetchUsers()
         this.props.fetchPosts()
     }
 
@@ -26,6 +29,7 @@ class PostsContainer extends React.Component {
                 <PostForm />
                 <PostSort />
                 { this.renderPosts() }
+                <PostsLoadMore />
             </div>
         )
     }
@@ -33,4 +37,4 @@ class PostsContainer extends React.Component {
 
 const mapStateToProps = state => ({ posts: state.posts, users: state.users })
 
-export default connect(mapStateToProps, { fetchPosts })(PostsContainer)
+export default connect(mapStateToProps, { fetchUsers, fetchPosts })(PostsContainer)

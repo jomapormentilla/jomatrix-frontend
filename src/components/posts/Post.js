@@ -1,19 +1,14 @@
 import React from 'react'
+
+import PostHeader from './PostHeader'
 import PostContent from './PostContent'
-import CommentsContainer from './CommentsContainer'
+import CommentsContainer from '../comments/CommentsContainer'
 
 class Post extends React.Component {
     render(){
         return(
             <div className="post">
-                <div style={{ display: 'flex', alignItems: 'center', padding: '5px 10px' }}>
-                    <i className="bi-person-circle" style={{ fontSize: '30px', marginRight: '10px' }}></i>
-                    <div>
-                    { this.props.author.first_name } { this.props.author.last_name }
-                    <br /><span style={{ color: '#777' }}>Location</span>
-                    </div>
-                </div>
-
+                <PostHeader author={ this.props.author } />
                 <PostContent content={ this.props.post.content } />
 
                 <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', alignItems: 'center' }}>
