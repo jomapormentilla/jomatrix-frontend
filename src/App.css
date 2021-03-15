@@ -45,7 +45,7 @@ body, html {
         bottom: 5px;
     }
 
-.login {
+.login, .signup {
     display: flex;
     flex-direction: column;;
     justify-content: center;
@@ -54,7 +54,10 @@ body, html {
     background-color: rgb(42, 7, 96);
 }
 
-    .login input, .login button {
+    .login input,
+    .login button,
+    .signup input,
+    .signup button {
         width: 100%;
         height: 30px;
         margin-bottom: 5px;
@@ -64,17 +67,19 @@ body, html {
         transition: 0.5s;
     }
 
-    .login input:focus {
+    .login input:focus,
+    .signup input:focus {
         outline: 0;
     }
 
-    .login button:hover {
+    .login button:hover,
+    .signup button:hover {
         background-color: #777;
         color: #fff;
         cursor: pointer;
     }
 
-.signupLink > a {
+.signupLink > a, .signup > div > a {
     color: #fff;
     text-decoration: none;
 }
