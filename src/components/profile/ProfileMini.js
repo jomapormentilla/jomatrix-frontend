@@ -4,7 +4,7 @@ class ProfileMini extends React.Component {
     render(){
         return(
             <div className="profileMini">
-                Mini Profile!
+                Hello, { this.props.currentUser.first_name }!
             </div>
         )
     }

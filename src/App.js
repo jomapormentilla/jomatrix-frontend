@@ -13,6 +13,7 @@ import ProfileMini from './components/profile/ProfileMini'
 import PostsContainer from './components/posts/PostsContainer'
 import Settings from './components/profile/Settings'
 import Footer from './components/Footer'
+import NotFound from './components/NotFound'
 
 class App extends React.Component {
   componentDidMount(){
@@ -25,15 +26,20 @@ class App extends React.Component {
         <Router>
           { !!this.props.loggedIn ? <Header /> : null }
           <Switch>
-            <Route exact path="/" render={()=> !this.props.loggedIn ? <Login /> : <Redirect to="/feed" /> } />
-            <Route path="/signup" render={()=> !this.props.loggedIn ? <Signup /> : <Redirect to="/feed" /> } />
+            <Route exact path="/">
+              { !this.props.loggedIn ? <Login /> : <Redirect to="/feed" /> }
+            </Route>
+
+            <Route path="/signup">
+              { !this.props.loggedIn ? <Signup /> : <Redirect to="/feed" /> }
+            </Route>
             
             <Route path="/feed">
               { !this.props.loggedIn ? <Redirect to="/" /> : (
                 <>
                   <div style={{ display: 'flex', justifyContent: 'center' }}>
                     <PostsContainer />
-                    <ProfileMini />
+                    <ProfileMini currentUser={ this.props.currentUser } />
                   </div>
                   <Footer />
                 </>
@@ -51,6 +57,8 @@ class App extends React.Component {
             <Route path="/settings">
               { !this.props.loggedIn ? <Redirect to="/" /> : <Settings /> }
             </Route>
+
+            <Route path="/*" component={ NotFound } />
           </Switch>
         </Router>
       </div>
@@ -58,6 +66,9 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({ loggedIn: state.loggedIn, currentUser: state.currentUser })
+const mapStateToProps = state => ({
+  loggedIn: state.loggedIn,
+  currentUser: state.currentUser
+})
 
 export default connect(mapStateToProps, { autoLogin })(App)

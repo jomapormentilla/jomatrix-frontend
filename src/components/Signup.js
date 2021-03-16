@@ -14,11 +14,28 @@ class Signup extends React.Component {
         this.setState({
             [e.target.name]: e.target.value
         })
+        e.target.style.backgroundColor = '#fff'
     }
 
     handleOnSubmit = e => {
         e.preventDefault()
-        console.log(this.state)
+        let inputs = e.target.children
+
+        let allow = 0
+        for (let input in inputs) {
+            if (inputs[input].value === '' && inputs[input].type !== 'submit') {
+                console.log(`${ inputs[input].placeholder } cannot be left blank.`)
+                inputs[input].style.backgroundColor = "#fac7d2"
+                allow++
+            }
+        }
+
+        if (allow === 0 && inputs.password.value === inputs.confirm.value) {
+            console.log(this.state) // fetch here
+        } else {
+            e.target.children.confirm.style.backgroundColor = "#fac7d2"
+            console.log('Confirm Password does not match.')
+        }
     }
 
     render(){

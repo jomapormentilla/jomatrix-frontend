@@ -5,8 +5,8 @@ import { login } from '../actions/loginActions'
 
 class Login extends React.Component {
     state = {
-        email: 'jomapormentilla@gmail.com',
-        password: 'Teamstinga77.'
+        email: '',
+        password: ''
     }
 
     handleOnChange = e => {
