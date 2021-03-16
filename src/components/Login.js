@@ -1,5 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { login } from '../actions/loginActions'
 
 class Login extends React.Component {
     state = {
@@ -15,7 +17,7 @@ class Login extends React.Component {
 
     handleOnSubmit = e => {
         e.preventDefault()
-        console.log(this.state)
+        this.props.login(this.state)
     }
 
     render(){
@@ -23,8 +25,8 @@ class Login extends React.Component {
             <div className="login">
                 <form onSubmit={ this.handleOnSubmit } style={{ display: 'flex', flexDirection: 'column', textAlign: 'center', width: '350px', alignItems: 'center' }}>
                     <h1 className="logo" style={{ fontSize: '80px' }}>Jomatrix</h1>
-                    <input type="email" name="email" placeholder="Email" onChange={ this.handleOnChange } />
-                    <input type="password" name="password" placeholder="Password" onChange={ this.handleOnChange } />
+                    <input type="email" name="email" value={ this.state.email } placeholder="Email" onChange={ this.handleOnChange } />
+                    <input type="password" name="password" value={ this.state.password } placeholder="Password" onChange={ this.handleOnChange } />
                     <button type="submit">Login</button>
                 </form>
 
@@ -42,4 +44,4 @@ class Login extends React.Component {
     }
 }
 
-export default Login
+export default connect(null, { login })(Login)

@@ -7,7 +7,7 @@ import CommentForm from './CommentForm'
 
 class CommentsContainer extends React.Component {
     componentDidMount(){
-        this.props.fetchComments()
+        this.props.fetchComments(this.props.token)
     }
 
     author = id => {
@@ -31,6 +31,6 @@ class CommentsContainer extends React.Component {
     }
 }
 
-const mapStateToProps = state => ({ comments: state.comments, users: state.users })
+const mapStateToProps = state => ({ comments: state.comments, users: state.users, token: state.token })
 
 export default connect(mapStateToProps, { fetchComments })(CommentsContainer)

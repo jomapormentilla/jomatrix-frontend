@@ -9,7 +9,8 @@ class PostHeader extends React.Component {
                     <i className="bi-person-circle" style={{ fontSize: '30px', marginRight: '10px' }}></i>
                     <div>
                         { this.props.author.first_name } { this.props.author.last_name }
-                        <br /><span style={{ color: '#777' }}>Location</span> <span style={{ color: '#aaa' }}>{ moment(this.props.post.created_at).fromNow() }</span>
+                        <br /><span style={{ color: '#777' }}>Location</span> &nbsp;
+                        <span style={{ color: '#aaa' }} title={ moment(this.props.post.created_at).format("dddd, MMMM Do YYYY, h:mm:ss a") }>{ moment(this.props.post.created_at).fromNow() }</span>
                     </div>
                 </div>
 

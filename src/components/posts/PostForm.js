@@ -4,7 +4,9 @@ class PostForm extends React.Component {
     render(){
         return(
             <div className="postForm">
-                PostForm
+                <form>
+                    <input type="text" placeholder="Create a New Post" />
+                </form>
             </div>
         )
     }

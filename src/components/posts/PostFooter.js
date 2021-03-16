@@ -2,7 +2,6 @@ import React from 'react'
 
 class PostFooter extends React.Component {
     render(){
-        console.log(this.props.post)
         return(
             <div style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
