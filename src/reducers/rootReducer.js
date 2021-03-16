@@ -1,3 +1,14 @@
+// import { combineReducers } from 'redux'
+// import { usersReducer } from './usersReducer'
+// import { postsReducer } from './postsReducer'
+// import { commentsReducer } from './commentsReducer'
+
+// const reducer = combineReducers({
+//     users: usersReducer,
+//     posts: postsReducer,
+//     comments: commentsReducer,
+// })
+
 const reducer = (state = {
     users: [],
     posts: [],
@@ -20,7 +31,6 @@ const reducer = (state = {
             return { ...state, loading: action.loading }
             
         case 'LOGIN_USER':
-            console.log(state)
             return { ...state, loggedIn: action.loggedIn, currentUser: action.data }
         
         case 'LOGOUT_USER':
