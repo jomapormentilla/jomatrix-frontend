@@ -10,9 +10,10 @@ import PostsLoadMore from './PostsLoadMore'
 
 class PostsContainer extends React.Component {
     componentDidMount(){
-        this.props.fetchPosts(this.props.token)
-        this.props.fetchUsers(this.props.token)
+        this.props.fetchPosts(sessionStorage.accessToken)
+        this.props.fetchUsers(sessionStorage.accessToken)
         console.log(`PostsContainer mounted`)
+        console.log(this.props)
     }
 
     author = id => {
@@ -24,18 +25,17 @@ class PostsContainer extends React.Component {
     }
 
     render(){
-        console.log(this.props)
         return(
             <div className="postsContainer">
                 <PostForm />
                 <PostSort />
-                { this.props.loading && this.props.posts.length === 0 && this.props.users.length === 0 ? <h1>Loading...</h1> : this.renderPosts() }
+                { this.props.loading || this.props.posts.length === 0 || this.props.users.length === 0 ? <h1>Loading...</h1> : this.renderPosts() }
                 <PostsLoadMore />
             </div>
         )
     }
 }
 
-const mapStateToProps = state => ({ posts: state.posts, users: state.users, loading: state.loading, token: state.token, loggedIn: state.loggedIn, current_user: state.current_user })
+const mapStateToProps = state => ({ posts: state.posts, users: state.users, loading: state.loading, loggedIn: state.loggedIn, currentUser: state.currentUser })
 
 export default connect(mapStateToProps, { fetchUsers, fetchPosts })(PostsContainer)

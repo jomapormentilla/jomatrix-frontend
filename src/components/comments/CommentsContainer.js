@@ -7,7 +7,7 @@ import CommentForm from './CommentForm'
 
 class CommentsContainer extends React.Component {
     componentDidMount(){
-        this.props.fetchComments(this.props.token)
+        this.props.fetchComments(sessionStorage.accessToken)
     }
 
     author = id => {

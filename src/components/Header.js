@@ -1,7 +1,15 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { logout } from '../actions/loginActions'
 
 class Header extends React.Component {
+    handleLogout = () => {
+        sessionStorage.removeItem('accessToken')
+        this.props.logout()
+        window.location.reload()
+    }
+
     render(){
         return(
             <div className="header">
@@ -14,10 +22,11 @@ class Header extends React.Component {
                     <NavLink to="/chat"><i className="bi-chat"></i></NavLink>
                     <NavLink to="/profile"><i className="bi-person-circle"></i></NavLink>
                     <NavLink to="/settings"><i className="bi-gear"></i></NavLink>
+                    <i className="bi-box-arrow-right" title="Logout" onClick={ this.handleLogout }></i>
                 </div>
             </div>
         )
     }
 }
 
-export default Header
+export default connect(null, { logout })(Header)

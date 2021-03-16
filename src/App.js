@@ -2,6 +2,7 @@ import React from 'react'
 import './App.css';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { autoLogin } from './actions/loginActions'
 
 import Header from './components/Header'
 import Login from './components/Login'
@@ -14,6 +15,10 @@ import Settings from './components/profile/Settings'
 import Footer from './components/Footer'
 
 class App extends React.Component {
+  componentDidMount(){
+      this.props.autoLogin()
+  }
+
   render(){
     return (
       <div className="App">
@@ -36,15 +41,15 @@ class App extends React.Component {
             </Route>
             
             <Route path="/chat">
-              <Chat />
+              { !this.props.loggedIn ? <Redirect to="/" /> : <Chat /> }
             </Route>
 
             <Route path="/profile">
-              <ProfileContainer />
+              { !this.props.loggedIn ? <Redirect to="/" /> : <ProfileContainer /> }
             </Route>
             
             <Route path="/settings">
-              <Settings />
+              { !this.props.loggedIn ? <Redirect to="/" /> : <Settings /> }
             </Route>
           </Switch>
         </Router>
@@ -53,6 +58,6 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({ loggedIn: state.loggedIn, current_user: state.current_user })
+const mapStateToProps = state => ({ loggedIn: state.loggedIn, currentUser: state.currentUser })
 
-export default connect(mapStateToProps)(App)
+export default connect(mapStateToProps, { autoLogin })(App)

@@ -33,12 +33,13 @@ body, html {
         padding: 5px 0px;
     }
 
-    .navItems > a > i {
+    .navItems > a > i, .navItems > i {
         margin: 10px;
         text-decoration: none;
         color: #fff;
         font-size: 20px;
         transition: 0.5s;
+        cursor: pointer;
     }
 
     .navItems > a > i:hover {

@@ -9,6 +9,7 @@ export const fetchUsers = (jwt) => {
     }
 
     return (dispatch) => {
+        dispatch({ type: 'LOADING', loading: true })
         fetch(url + `/users`, configObj)
         .then(res => res.json())
         .then(data => {

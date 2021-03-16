@@ -1,5 +1,31 @@
 const url = `http://localhost:3000`
 
+export const autoLogin = () => {
+    return (dispatch) => {
+        const token = sessionStorage.accessToken
+        const configObj = {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'Authorization': `Bearer ${ token }`
+            }
+        }
+        
+        if (token) {
+            fetch(url + `/profile`, configObj)
+            .then(res => res.json())
+            .then(data => {
+                if (!!data.error) {
+                    sessionStorage.removeItem('accessToken')
+                } else {
+                    dispatch({ type: 'LOGIN_USER', loggedIn: true, data: data.user.user })
+                }
+            })
+        }
+    }
+}
+
 export const login = data => {
     const loginObj = {
         user: {
@@ -24,8 +50,15 @@ export const login = data => {
             if (!!data.error) {
                 alert('Invalid Credentials')
             } else {
-                dispatch({ type: 'LOGIN_USER', loggedIn: true, jwt: data.jwt, data })
+                sessionStorage.setItem('accessToken', data.jwt)
+                dispatch({ type: 'LOGIN_USER', loggedIn: true, data: data.data })
             }
         })
+    }
+}
+
+export const logout = () => {
+    return (dispatch) => {
+        dispatch({ type: 'LOGOUT_USER' })
     }
 }
