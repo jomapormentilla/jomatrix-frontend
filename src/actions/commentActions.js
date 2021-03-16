@@ -1,4 +1,4 @@
-const url = `http://localhost:3000`
+import { url } from './baseUrl'
 
 export const fetchComments = (jwt) => {
     const configObj = {

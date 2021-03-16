@@ -47,6 +47,41 @@ body, html {
         bottom: 5px;
     }
 
+    .navHeader {
+        display: flex;
+        position: absolute;
+        background-color: #fff;
+        width: 200px;
+        border: solid 1px #ddd;
+        border-radius: 0px 0px 5px 5px;
+        z-index: 10;
+    }
+
+        .navHeader ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            width: 100%;
+        }
+        
+        .navHeader ul li {
+            padding: 10px;
+            font-size: 15px;
+            width: 100%;
+            margin-left: -10px;
+            cursor: pointer;
+        }
+
+        .navHeader ul li:hover {
+            background-color: #eee;
+        }
+
+        .navHeader ul a {
+            color: #000;
+            text-decoration: none;
+            width: 100%;
+        }
+
 .login, .signup {
     display: flex;
     flex-direction: column;;

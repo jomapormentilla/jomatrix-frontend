@@ -1,32 +1,58 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import { connect } from 'react-redux'
-import { logout } from '../actions/loginActions'
+
+import NavHeader from './profile/NavHeader'
 
 class Header extends React.Component {
-    handleLogout = () => {
-        sessionStorage.removeItem('accessToken')
-        this.props.logout()
-        window.location.reload()
+    state = {
+        profileNav: {
+            display: false,
+            clientX: null,
+            clientY: null
+        }
+    }
+
+    handleNavItemClick = (e, navItem) => {
+        e.persist()
+        this.setState(prevState => ({
+            ...prevState, 
+            [navItem]: {
+                ...prevState,
+                display: !prevState[navItem].display,
+                clientX: e.clientX,
+                clientY: e.clientY
+            }
+        }), ()=>console.log(this.state))
+    }
+
+    hideProfileNav = (e) => {
+        if (!!this.state.profileNav.display) {
+            this.setState(prevState => ({
+                ...prevState,
+                profileNav: {
+                    ...prevState, display: false
+                }
+            }))
+        }
     }
 
     render(){
         return(
-            <div className="header">
+            <div className="header" onClick={ this.hideProfileNav }>
                 <div className="logo">
                     <NavLink to="/">Jomatrix</NavLink>
                 </div>
 
+                { this.state.profileNav.display ? <NavHeader clientX={ this.state.profileNav.clientX } clientY={ this.state.profileNav.clientY } /> : null }
+
                 <div className="navItems">
                     <NavLink to="/feed"><i className="bi-house"></i></NavLink>
                     <NavLink to="/chat"><i className="bi-chat"></i></NavLink>
-                    <NavLink to="/profile"><i className="bi-person-circle"></i></NavLink>
-                    <NavLink to="/settings"><i className="bi-gear"></i></NavLink>
-                    <i className="bi-box-arrow-right" title="Logout" onClick={ this.handleLogout }></i>
+                    <i className="bi-person-circle" onClick={ e => this.handleNavItemClick(e, 'profileNav') }></i>
                 </div>
             </div>
         )
     }
 }
 
-export default connect(null, { logout })(Header)
+export default Header
