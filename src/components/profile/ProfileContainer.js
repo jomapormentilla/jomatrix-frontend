@@ -1,52 +1,25 @@
 import React from 'react'
-import { Route, Switch, Link, useRouteMatch } from 'react-router-dom'
+import { connect } from 'react-redux'
 
-import Edit from './Edit'
+import ProfileMain from './ProfileMain'
+
+const styles = {
+    display: 'flex',
+    backgroundColor: '#fff',
+    width: '600px',
+    minHeight: '60vh'
+}
 
 const Profile = () => {
-
-    let { path, url } = useRouteMatch()
-    
     return(
         <div className="profile">
-            <div>
-                <Link to={`${ url }/edit`}>edit</Link><br />
-                <Link to={`${ url }/test`}>test</Link><br />
-
-                <Switch>
-                    <Route exact path={ path }>
-                        Profile<br />
-                    </Route>
-
-                    <Route path={`${ path }/edit`}>
-                        <Edit />
-                    </Route>
-
-                    <Route path={`${ path }/:test`}>
-                        Test
-                    </Route>
-                </Switch>
+            <div style={ styles }>
+                <ProfileMain />
             </div>
         </div>
     )
 }
 
-// class Profile extends React.Component {
-//     render(){
-//         let { path, url } = useRouteMatch()
-//         return(
-//             <div className="profile">
-//                 <Switch>
-//                     <Route exact path={ path }>
-//                         Profile
-//                     </Route>
-//                     <Route path={`${ path }/test`}>
-//                         Test
-//                     </Route>
-//                 </Switch>
-//             </div>
-//         )
-//     }
-// }
+const mapStateToProps = state => ({ currentUser: state.currentUser })
 
-export default Profile
+export default connect(mapStateToProps)(Profile)

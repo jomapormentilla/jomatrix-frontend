@@ -57,14 +57,14 @@ body, html {
         z-index: 10;
     }
 
-        .navHeader ul {
+        .navHeader ul, .profileNav ul {
             padding: 0;
             margin: 0;
             list-style: none;
             width: 100%;
         }
         
-        .navHeader ul li {
+        .navHeader ul li, .profileNav ul li {
             padding: 10px;
             font-size: 15px;
             width: 100%;
@@ -72,11 +72,11 @@ body, html {
             cursor: pointer;
         }
 
-        .navHeader ul li:hover {
+        .navHeader ul li:hover, .profileNav ul li:hover {
             background-color: #eee;
         }
 
-        .navHeader ul a {
+        .navHeader ul a, .profileNav ul a {
             color: #000;
             text-decoration: none;
             width: 100%;
@@ -190,7 +190,8 @@ body, html {
         overflow: hidden;
     }
 
-    .postForm input {
+    .postForm input,
+    .profileEdit input {
         width: 100%;
         height: 100%;
         border: none;
@@ -198,7 +199,13 @@ body, html {
         padding: 10px;
     }
 
-    .postForm input:focus {
+        .profileEdit input {
+            border: solid 1px #ddd;
+            margin-bottom: 10px;
+        }
+
+    .postForm input:focus,
+    .profileEdit input:focus {
         outline: 0;
     }
 

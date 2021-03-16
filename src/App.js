@@ -10,6 +10,7 @@ import Signup from './components/Signup'
 import Chat from './components/Chat'
 import ProfileContainer from './components/profile/ProfileContainer'
 import ProfileMini from './components/profile/ProfileMini'
+import ProfileUser from './components/profile/ProfileUser'
 import PostsContainer from './components/posts/PostsContainer'
 import Settings from './components/profile/Settings'
 import Footer from './components/Footer'
@@ -56,6 +57,10 @@ class App extends React.Component {
             
             <Route path="/settings">
               { !this.props.loggedIn ? <Redirect to="/" /> : <Settings /> }
+            </Route>
+
+            <Route path="/:username">
+            { !this.props.loggedIn ? <Redirect to="/" /> : <ProfileUser /> }
             </Route>
 
             <Route path="/*" component={ NotFound } />
