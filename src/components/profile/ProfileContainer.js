@@ -13,7 +13,7 @@ const styles = {
 const Profile = () => {
     return(
         <div className="profile">
-            <div style={ styles }>
+            <div>
                 <ProfileMain />
             </div>
         </div>

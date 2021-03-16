@@ -177,14 +177,14 @@ body, html {
 .postsLoadMore {
     /* border: solid 1px #aaa; */
     border-radius: 5px;
-    box-shadow: 0px 0px 5px 2px #ccc;
+    /* box-shadow: 0px 0px 5px 2px #ccc; */
     background-color: #fff;
     width: 450px;
 }
 
     .postForm {
         border-radius: 5px;
-        box-shadow: 0px 0px 5px 2px #ccc;
+        /* box-shadow: 0px 0px 5px 2px #ccc; */
         background-color: #fff;
         width: 100%;
         overflow: hidden;
@@ -201,7 +201,7 @@ body, html {
 
         .profileEdit input {
             border: solid 1px #ddd;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
 
     .postForm input:focus,

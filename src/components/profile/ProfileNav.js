@@ -4,7 +4,8 @@ import { Link, useRouteMatch } from 'react-router-dom'
 const styles = {
     display: 'flex',
     borderRight: 'solid 1px #ddd',
-    minWidth: '100px',
+    width: 'fit-content',
+    whiteSpace: 'nowrap',
     padding: '10px'
 }
 
@@ -15,6 +16,7 @@ const ProfileNav = props => {
         <div className="profileNav" style={ styles }>
             <ul>
                 <Link to={`${url}/edit`}><li>Edit Profile</li></Link>
+                <Link to={`${url}/password`}><li>Change Password</li></Link>
                 <Link to={`${url}/test`}><li>Test Profile</li></Link>
             </ul>
         </div>

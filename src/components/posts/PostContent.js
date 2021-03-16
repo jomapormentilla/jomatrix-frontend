@@ -4,7 +4,7 @@ class PostContent extends React.Component {
     render(){
         return(
             <div className="postContent">
-                { this.props.content }
+                <img src={ this.props.content } alt={ this.props.content } style={{ width: '100%' }} />
             </div>
         )
     }

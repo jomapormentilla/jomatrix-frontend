@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { logout } from '../../actions/loginActions'
 
-class NavHeader extends React.Component {
+class ProfileNavHeader extends React.Component {
     handleLogout = () => {
         sessionStorage.removeItem('accessToken')
         this.props.logout()
@@ -23,4 +23,4 @@ class NavHeader extends React.Component {
     }
 }
 
-export default connect(null, { logout })(NavHeader)
+export default connect(null, { logout })(ProfileNavHeader)

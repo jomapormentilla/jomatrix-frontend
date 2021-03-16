@@ -8,7 +8,8 @@ const styles = {
     display: 'flex',
     backgroundColor: '#fff',
     width: '600px',
-    minHeight: '60vh'
+    minHeight: '60vh',
+    height: 'fit-content'
 }
 
 const Settings = () => {
@@ -22,6 +23,10 @@ const Settings = () => {
                 <Switch>
                     <Route exact path={`${ path }/edit`}>
                         <Edit />
+                    </Route>
+                    
+                    <Route exact path={`${ path }/password`}>
+                        Password Change
                     </Route>
 
                     <Route path={`${ path }/:test`}>
