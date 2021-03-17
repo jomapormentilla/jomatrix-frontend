@@ -1,0 +1,4 @@
+window.env = {
+  "AWS_ACCESS_KEY_ID": "AKIA6CGHL4KL5TIUOAFK",
+  "AWS_SECRET_ACCESS_KEY": "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"
+};

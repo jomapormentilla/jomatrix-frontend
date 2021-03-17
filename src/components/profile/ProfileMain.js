@@ -21,11 +21,10 @@ class ProfileMain extends React.Component {
     }
 
     render(){
-        console.log(this.myPosts())
         return(
             <div className="profileMain">
                 <p>Profile info goes here</p>
-                <br /><hr />
+                <br /><hr /><br />
                 <PostForm />
                 <br /><hr />
                 { this.renderPosts() }

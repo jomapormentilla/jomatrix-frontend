@@ -20,7 +20,7 @@ class Header extends React.Component {
                 clientX: e.clientX,
                 clientY: e.clientY
             }
-        }, ()=>console.log(this.state))
+        })
     }
 
     hideProfileNav = (e) => {

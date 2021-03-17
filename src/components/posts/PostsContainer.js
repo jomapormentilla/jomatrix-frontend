@@ -11,8 +11,6 @@ class PostsContainer extends React.Component {
     componentDidMount(){
         this.props.fetchPosts(sessionStorage.accessToken)
         this.props.fetchUsers(sessionStorage.accessToken)
-        console.log(`PostsContainer mounted`)
-        console.log(this.props)
     }
 
     author = id => {
