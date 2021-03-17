@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { fetchUsers } from '../../actions/userActions'
 import { fetchPosts } from '../../actions/postActions'
 
+import Loading from '../../components/Loading'
 import Post from './Post'
 import PostSort from './PostSort'
 import PostsLoadMore from './PostsLoadMore'
@@ -25,7 +26,7 @@ class PostsContainer extends React.Component {
         return(
             <div className="postsContainer">
                 <PostSort />
-                { this.props.loading || this.props.posts.length === 0 || this.props.users.length === 0 ? <h1>Loading...</h1> : this.renderPosts() }
+                { this.props.loading || this.props.posts.length === 0 || this.props.users.length === 0 ? <Loading /> : this.renderPosts() }
                 <PostsLoadMore />
             </div>
         )
