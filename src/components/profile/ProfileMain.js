@@ -1,13 +1,15 @@
 import React from 'react'
 import { connect } from 'react-redux'
+
+import PostForm from '../posts/PostForm'
 import Post from '../posts/Post'
 
-const styles = {
-    display: 'flex',
-    flexDirection: 'column',
-    padding: '10px',
-    width: '100%'
-}
+// const styles = {
+//     display: 'flex',
+//     flexDirection: 'column',
+//     padding: '10px',
+//     width: '100%'
+// }
 
 class ProfileMain extends React.Component {
     myPosts = () => {
@@ -22,7 +24,10 @@ class ProfileMain extends React.Component {
         console.log(this.myPosts())
         return(
             <div className="profileMain">
-                <h1 style={{ textAlign: 'center' }}><i className="bi-person-circle"></i> &nbsp; { this.props.currentUser.username }</h1>
+                <p>Profile info goes here</p>
+                <br /><hr />
+                <PostForm />
+                <br /><hr />
                 { this.renderPosts() }
             </div>
         )

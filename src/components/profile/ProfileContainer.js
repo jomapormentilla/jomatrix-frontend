@@ -3,12 +3,12 @@ import { connect } from 'react-redux'
 
 import ProfileMain from './ProfileMain'
 
-const styles = {
-    display: 'flex',
-    backgroundColor: '#fff',
-    width: '600px',
-    minHeight: '60vh'
-}
+// const styles = {
+//     display: 'flex',
+//     backgroundColor: '#fff',
+//     width: '600px',
+//     minHeight: '60vh'
+// }
 
 const Profile = () => {
     return(

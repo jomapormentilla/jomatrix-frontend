@@ -25,6 +25,10 @@ const Settings = () => {
                         <Edit />
                     </Route>
                     
+                    <Route exact path={`${ path }/image`}>
+                        Change Profile Picture
+                    </Route>
+
                     <Route exact path={`${ path }/password`}>
                         Password Change
                     </Route>

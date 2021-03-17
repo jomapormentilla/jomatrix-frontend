@@ -4,7 +4,9 @@ class PostSort extends React.Component {
     render(){
         return(
             <div className="postSort">
-                PostSort
+                <div style={{ padding: '10px' }}>
+                    PostSort
+                </div>
             </div>
         )
     }

@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 
 class Edit extends React.Component {
     state = {
+        id: '',
         fname: '',
         lname: '',
         email: '',
@@ -14,6 +15,7 @@ class Edit extends React.Component {
 
     componentDidMount(){
         this.setState({
+            id: this.props.currentUser.id,
             fname: this.props.currentUser.first_name,
             lname: this.props.currentUser.last_name,
             email: this.props.currentUser.email,
@@ -32,6 +34,7 @@ class Edit extends React.Component {
 
     handleOnSubmit = e => {
         e.preventDefault()
+        console.log(this.state)
     }
 
     render(){
@@ -60,6 +63,7 @@ class Edit extends React.Component {
                     <label htmlFor="gender">Gender</label>
                     <input type="text" name="gender" value={ this.state.gender } onChange={ this.handleOnChange } />
 
+                    <button type="submit">Save Changes</button>
                 </form>
             </div>
         )

@@ -4,7 +4,6 @@ import { fetchUsers } from '../../actions/userActions'
 import { fetchPosts } from '../../actions/postActions'
 
 import Post from './Post'
-import PostForm from './PostForm'
 import PostSort from './PostSort'
 import PostsLoadMore from './PostsLoadMore'
 
@@ -27,7 +26,6 @@ class PostsContainer extends React.Component {
     render(){
         return(
             <div className="postsContainer">
-                <PostForm />
                 <PostSort />
                 { this.props.loading || this.props.posts.length === 0 || this.props.users.length === 0 ? <h1>Loading...</h1> : this.renderPosts() }
                 <PostsLoadMore />
