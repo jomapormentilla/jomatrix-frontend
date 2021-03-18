@@ -34,7 +34,7 @@ const reducer = (state = {
             return { ...state, posts: action.posts, loading: false }
 
         case 'CREATE_POST':
-            return { ...state, posts: [...state.posts, action.data]}
+            return { ...state, posts: [action.data, ...state.posts]}
 
         case 'LIKE_POST':
             let idx = state.posts.findIndex(p => p.id === action.data.id)

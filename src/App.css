@@ -287,3 +287,12 @@ body, html {
         color: #fff;
         text-decoration: none;
     }
+
+.footerMini a {
+    color: #aaa;
+    text-decoration: none;
+}
+
+    .footerMini a:hover {
+        text-decoration: underline;
+    }

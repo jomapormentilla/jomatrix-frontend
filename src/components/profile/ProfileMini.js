@@ -11,8 +11,16 @@ class ProfileMini extends React.Component {
                         Test
                     </div>
 
-                    <div style={{ marginTop: '10px', color: '#aaa', padding: '5px' }}>
-                        <p>About - Github - LinkedIn</p>
+                    <div class="footerMini" style={{ marginTop: '10px', color: '#aaa', padding: '5px' }}>
+                        <p>
+                            About
+                            &nbsp; - &nbsp; 
+                            <a href="https://github.com/jomapormentilla?tab=repositories&q=jomatrix&type=&language=" target="_blank" rel="noreferrer">Github</a>
+                            &nbsp; - &nbsp;
+                            <a href="https://www.linkedin.com/in/jomapormentilla/" target="_blank" rel="noreferrer">LinkedIn</a>
+                            &nbsp; - &nbsp;
+                            <a href="https://jomapormentilla.medium.com/" target="_blank" rel="noreferrer">Blog</a>
+                        </p>
                         &copy; 2021 JOMATRIX Technologies
                     </div>
                 </div>

@@ -26,7 +26,7 @@ class PostsContainer extends React.Component {
     render(){
         // debugger
         return(
-            <div className="postsContainer">
+            <div className="postsContainer" style={{ marginBottom: '50px' }}>
                 <PostSort />
                 { this.props.loading || this.props.posts.length === 0 || this.props.users.length === 0 ? <Loading /> : this.renderPosts() }
                 <PostsLoadMore />
