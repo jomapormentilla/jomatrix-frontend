@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { fetchComments } from '../../actions/commentActions'
 
 import Modal from '../Modal'
-import Comment from './Comment'
+import CommentList from './CommentList'
 import CommentForm from './CommentForm'
 
 class CommentsContainer extends React.Component {
@@ -15,16 +15,8 @@ class CommentsContainer extends React.Component {
         this.props.fetchComments(sessionStorage.accessToken)
     }
 
-    author = id => {
-        return this.props.users.find(user => user.id === id )
-    }
-
     comments = () => {
         return this.props.comments.filter(comment => comment.commentable_id === this.props.post.id && comment.commentable_type === "Post" )
-    }
-
-    renderComments = () => {
-        return this.comments().length > 0 ? this.comments().map(comment => <Comment key={ comment.id } comment={ comment } author={ this.author(comment.user_id) } />) : <h1>No Comments</h1>
     }
 
     toggleModal = e => {
@@ -36,9 +28,9 @@ class CommentsContainer extends React.Component {
     render(){
         return(
             <div className="commentsContainer">
-                { !!this.state.modal ? <Modal toggleModal={ this.toggleModal } /> : null }
+                { !!this.state.modal ? <Modal toggleModal={ this.toggleModal } component={ <CommentList comments={ this.comments() } users={ this.props.users } post={ this.props.post } />} /> : null }
                 <div style={{ padding: '10px' }}>
-                    <span onClick={ this.toggleModal } style={{ color: '#777' }}>View { this.comments().length } Comments</span>
+                    <span onClick={ this.toggleModal } style={{ color: '#777', cursor: 'pointer' }}>View { this.comments().length } Comments</span>
                 </div>
                 <CommentForm post={ this.props.post } />
             </div>

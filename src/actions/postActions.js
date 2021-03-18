@@ -28,6 +28,7 @@ export const createPost = (jwt, data) => {
         accessKeyId: env.AWS_ACCESS_KEY_ID,
         secretAccessKey: env.AWS_SECRET_ACCESS_KEY
     }
+    debugger
     
     return dispatch => {
         dispatch({ type: 'LOADING' })

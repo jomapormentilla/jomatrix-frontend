@@ -40,7 +40,7 @@ export const createComment = (jwt, data) => {
         fetch(url + `/comments`, configObj)
         .then(res => res.json())
         .then(data => {
-            console.log(data)
+            dispatch({ type: 'CREATE_COMMENT', data })
         })
     }
 }

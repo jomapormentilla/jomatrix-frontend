@@ -16,7 +16,9 @@ const reducer = (state = {
     loading: false,
     loggedIn: false,
     currentUser: null
+
 }, action) => {
+    let idx
     switch (action.type) {
         case 'GET_USERS':
             return { ...state, users: action.users, loading: false }
@@ -37,11 +39,15 @@ const reducer = (state = {
             return { ...state, posts: [action.data, ...state.posts]}
 
         case 'LIKE_POST':
-            let idx = state.posts.findIndex(p => p.id === action.data.id)
+            idx = state.posts.findIndex(p => p.id === action.data.id)
             return { ...state, posts: [...state.posts.slice(0, idx), action.data, ...state.posts.slice(idx + 1)], loading: false }
 
         case 'GET_COMMENTS':
             return { ...state, comments: action.comments, loading: false }
+
+        case 'CREATE_COMMENT':
+            idx = state.posts.findIndex(p => p.id === action.data.id)
+            return { ...state, posts: [...state.posts.slice(0, idx), action.data, ...state.posts.slice(idx + 1)], loading: false, comments: [...state.comments, action.data.comments[action.data.comments.length - 1]] }
 
         case 'LOADING':
             return { ...state, loading: true }
