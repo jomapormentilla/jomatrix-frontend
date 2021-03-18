@@ -32,6 +32,9 @@ const reducer = (state = {
             
         case 'LOGIN_USER':
             return { ...state, loggedIn: action.loggedIn, currentUser: action.data }
+
+        case 'CREATE_USER':
+            return { ...state, loggedIn: true, currentUser: action.user }
         
         case 'LOGOUT_USER':
             return { ...state, loggedIn: false, currentUser: null }

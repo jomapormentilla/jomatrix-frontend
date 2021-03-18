@@ -1,5 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { createUser } from '../actions/userActions'
 
 class Signup extends React.Component {
     state = {
@@ -31,7 +33,7 @@ class Signup extends React.Component {
         }
 
         if (allow === 0 && inputs.password.value === inputs.confirm.value) {
-            console.log(this.state) // fetch here
+            this.props.createUser(this.state)
         } else {
             e.target.children.confirm.style.backgroundColor = "#fac7d2"
             console.log('Confirm Password does not match.')
@@ -61,4 +63,4 @@ class Signup extends React.Component {
     }
 }
 
-export default Signup
+export default connect(null, { createUser })(Signup)

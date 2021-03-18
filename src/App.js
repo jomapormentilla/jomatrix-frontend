@@ -60,7 +60,7 @@ class App extends React.Component {
             </Route>
 
             <Route path="/:username">
-            { !this.props.loggedIn ? <Redirect to="/" /> : <ProfileUser /> }
+              { !this.props.loggedIn ? <Redirect to="/" /> : <ProfileUser /> }
             </Route>
 
             <Route path="/*" component={ NotFound } />

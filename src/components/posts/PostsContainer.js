@@ -23,6 +23,7 @@ class PostsContainer extends React.Component {
     }
 
     render(){
+        console.log('Posts Container', this.props)
         return(
             <div className="postsContainer">
                 <PostSort />

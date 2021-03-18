@@ -19,10 +19,10 @@ class Edit extends React.Component {
             fname: this.props.currentUser.first_name,
             lname: this.props.currentUser.last_name,
             email: this.props.currentUser.email,
-            username: this.props.currentUser.username,
-            website: this.props.currentUser.website,
-            bio: this.props.currentUser.bio,
-            gender: this.props.currentUser.gender,
+            username: this.props.currentUser.username || '',
+            website: this.props.currentUser.website || '',
+            bio: this.props.currentUser.bio || '',
+            gender: this.props.currentUser.gender || '',
         })
     }
 
