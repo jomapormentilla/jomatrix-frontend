@@ -21,6 +21,15 @@ const reducer = (state = {
         case 'GET_USERS':
             return { ...state, users: action.users, loading: false }
 
+        case 'CREATE_USER':
+            return { ...state, loggedIn: true, currentUser: action.user, loading: false }
+
+        case 'LOGIN_USER':
+            return { ...state, loggedIn: action.loggedIn, currentUser: action.data, loading: false }
+        
+        case 'LOGOUT_USER':
+            return { ...state, loggedIn: false, currentUser: null, loading: false }
+
         case 'GET_POSTS':
             return { ...state, posts: action.posts, loading: false }
 
@@ -35,16 +44,7 @@ const reducer = (state = {
             return { ...state, comments: action.comments, loading: false }
 
         case 'LOADING':
-            return { ...state, loading: action.loading }
-            
-        case 'LOGIN_USER':
-            return { ...state, loggedIn: action.loggedIn, currentUser: action.data, loading: false }
-
-        case 'CREATE_USER':
-            return { ...state, loggedIn: true, currentUser: action.user, loading: false }
-        
-        case 'LOGOUT_USER':
-            return { ...state, loggedIn: false, currentUser: null, loading: false }
+            return { ...state, loading: true }
 
         default:
             return state

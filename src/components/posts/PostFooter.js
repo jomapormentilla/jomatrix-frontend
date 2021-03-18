@@ -3,9 +3,9 @@ import React from 'react'
 class PostFooter extends React.Component {
     renderHearts = () => {
         let liked = this.props.post.likes.find(like => like.user_id === this.props.currentUser.id)
-        
+
         if (!!liked) {
-            return <i className="bi-heart-fill" style={{ fontSize: '20px', marginRight: '10px', color: 'red' }}></i>
+            return <i className="bi-heart-fill" style={{ fontSize: '20px', marginRight: '10px', color: 'red' }} onClick={ (e)=>{this.props.handleUnlikePost(e, liked.id)} }></i>
         } else {
             return <i className="bi-heart" style={{ fontSize: '20px', marginRight: '10px' }} onClick={ (e)=>{this.props.handleLikePost(e, this.props.post.id)} }></i>
         }

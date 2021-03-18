@@ -11,7 +11,7 @@ export const fetchPosts = jwt => {
     }
 
     return (dispatch) => {
-        dispatch({ type: 'LOADING', loading: true })
+        dispatch({ type: 'LOADING' })
 
         fetch(url + `/posts`, configObj)
         .then(res => res.json())
@@ -30,7 +30,7 @@ export const createPost = (jwt, data) => {
     }
     
     return dispatch => {
-        dispatch({ type: 'LOADING', loading: true })
+        dispatch({ type: 'LOADING' })
 
         uploadFile(data.image, config)
         .then(resFile => {
@@ -80,6 +80,25 @@ export const likePost = (jwt, id) => {
 
     return (dispatch) => {
         fetch(url + `/likes`, configObj)
+        .then(res => res.json())
+        .then(data => {
+            dispatch({ type: 'LIKE_POST', data })
+        })
+    }
+}
+
+export const unlikePost = (jwt, id) => {
+    const configObj = {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${ jwt }`
+        }
+    }
+
+    return (dispatch) => {
+        fetch(url + `/likes/` + id, configObj)
         .then(res => res.json())
         .then(data => {
             dispatch({ type: 'LIKE_POST', data })

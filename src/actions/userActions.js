@@ -9,7 +9,7 @@ export const fetchUsers = (jwt) => {
     }
 
     return (dispatch) => {
-        dispatch({ type: 'LOADING', loading: true })
+        dispatch({ type: 'LOADING' })
         
         fetch(url + `/users`, configObj)
         .then(res => res.json())
@@ -39,7 +39,7 @@ export const createUser = (data) => {
     }
 
     return (dispatch) => {
-        dispatch({ type: 'LOADING', loading: true })
+        dispatch({ type: 'LOADING' })
 
         fetch(url + `/users`, configObj)
         .then(res => res.json())
