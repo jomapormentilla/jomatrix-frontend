@@ -19,6 +19,12 @@ class PostForm extends React.Component {
     handleOnSubmit = e => {
         e.preventDefault()
         this.props.createPost(sessionStorage.accessToken, this.state)
+        this.setState({
+            description: '',
+            location: '',
+            image: null,
+            preview: null
+        })
     }
 
     handleImageUpload = e => {

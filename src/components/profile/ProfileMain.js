@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 
 import PostForm from '../posts/PostForm'
 import Post from '../posts/Post'
+import Loading from '../Loading'
 
 // const styles = {
 //     display: 'flex',
@@ -27,7 +28,7 @@ class ProfileMain extends React.Component {
                 <br /><hr /><br />
                 <PostForm />
                 <br /><hr />
-                { this.currentUser !== null ? this.renderPosts() : null }
+                { this.currentUser !== null || !this.props.loading ? this.renderPosts() : <Loading /> }
             </div>
         )
     }

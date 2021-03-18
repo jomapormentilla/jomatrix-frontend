@@ -24,10 +24,12 @@ const reducer = (state = {
         case 'GET_POSTS':
             return { ...state, posts: action.posts, loading: false }
 
+        case 'CREATE_POST':
+            return { ...state, posts: [...state.posts, action.data]}
+
         case 'LIKE_POST':
             let idx = state.posts.findIndex(p => p.id === action.data.id)
-            // debugger
-            return { ...state, posts: [...state.posts.slice(0, idx), action.data, ...state.posts.slice(idx + 1)] }
+            return { ...state, posts: [...state.posts.slice(0, idx), action.data, ...state.posts.slice(idx + 1)], loading: false }
 
         case 'GET_COMMENTS':
             return { ...state, comments: action.comments, loading: false }

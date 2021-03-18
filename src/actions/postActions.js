@@ -54,7 +54,7 @@ export const createPost = (jwt, data) => {
             fetch(url + `/posts`, configObj)
             .then(res => res.json())
             .then(data => {
-                console.log('Create Post Fetch Response', data)
+                dispatch({ type: 'CREATE_POST', data })
             })
         })
     }
@@ -82,7 +82,6 @@ export const likePost = (jwt, id) => {
         fetch(url + `/likes`, configObj)
         .then(res => res.json())
         .then(data => {
-            // debugger
             dispatch({ type: 'LIKE_POST', data })
         })
     }
