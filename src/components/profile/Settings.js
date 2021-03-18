@@ -15,7 +15,7 @@ const styles = {
 const Settings = () => {
     
     let { path } = useRouteMatch()
-
+    
     return(
         <div className="settings">
             <div style={ styles }>
