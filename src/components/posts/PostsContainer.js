@@ -12,6 +12,7 @@ class PostsContainer extends React.Component {
     componentDidMount(){
         this.props.fetchPosts(sessionStorage.accessToken)
         this.props.fetchUsers(sessionStorage.accessToken)
+        // console.log('PostsContainer Mounted')
     }
 
     author = id => {
@@ -19,11 +20,11 @@ class PostsContainer extends React.Component {
     }
 
     renderPosts = () => {
-        return this.props.posts.map(post => <Post key={ post.id } post={ post } author={ this.author(post.user_id) } />)
+        return this.props.posts.map(post => <Post key={ post.id } post={ post } author={ this.author(post.user_id) } currentUser={ this.props.currentUser } />)
     }
 
     render(){
-        console.log('Posts Container', this.props)
+        // debugger
         return(
             <div className="postsContainer">
                 <PostSort />

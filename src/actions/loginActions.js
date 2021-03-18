@@ -44,6 +44,8 @@ export const login = data => {
     }
 
     return (dispatch) => {
+        dispatch({ type: 'LOADING', loading: true })
+
         fetch(url + `/login`, configObj)
         .then(res => res.json())
         .then(data => {

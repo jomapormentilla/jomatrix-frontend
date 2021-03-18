@@ -12,6 +12,7 @@ export const fetchPosts = jwt => {
 
     return (dispatch) => {
         dispatch({ type: 'LOADING', loading: true })
+
         fetch(url + `/posts`, configObj)
         .then(res => res.json())
         .then(data => {
@@ -29,6 +30,8 @@ export const createPost = (jwt, data) => {
     }
     
     return dispatch => {
+        dispatch({ type: 'LOADING', loading: true })
+
         uploadFile(data.image, config)
         .then(resFile => {
             const postInfo = {
@@ -53,6 +56,34 @@ export const createPost = (jwt, data) => {
             .then(data => {
                 console.log('Create Post Fetch Response', data)
             })
+        })
+    }
+}
+
+export const likePost = (jwt, id) => {
+    const likeInfo = {
+        like: {
+            likeable_type: 'Post',
+            likeable_id: id
+        }
+    }
+
+    const configObj = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${ jwt }`
+        },
+        body: JSON.stringify(likeInfo)
+    }
+
+    return (dispatch) => {
+        fetch(url + `/likes`, configObj)
+        .then(res => res.json())
+        .then(data => {
+            // debugger
+            dispatch({ type: 'LIKE_POST', data })
         })
     }
 }

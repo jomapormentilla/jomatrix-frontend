@@ -13,12 +13,12 @@ import ProfileMini from './components/profile/ProfileMini'
 import ProfileUser from './components/profile/ProfileUser'
 import PostsContainer from './components/posts/PostsContainer'
 import Settings from './components/profile/Settings'
-import Footer from './components/Footer'
 import NotFound from './components/NotFound'
 
 class App extends React.Component {
   componentDidMount(){
       this.props.autoLogin()
+      console.log('App Component Mounted')
   }
 
   render(){
@@ -42,7 +42,6 @@ class App extends React.Component {
                     <PostsContainer />
                     <ProfileMini currentUser={ this.props.currentUser } />
                   </div>
-                  <Footer />
                 </>
               ) }
             </Route>

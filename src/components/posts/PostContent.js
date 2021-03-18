@@ -3,8 +3,8 @@ import React from 'react'
 class PostContent extends React.Component {
     render(){
         return(
-            <div className="postContent">
-                <img src={ this.props.content } alt={ this.props.content } style={{ width: '100%' }} />
+            <div className="postContent" onDoubleClick={ (e)=>{this.props.handleLikePost(e, this.props.post.id)} }>
+                <img src={ this.props.post.content } alt={ this.props.post.content } style={{ width: '100%' }} />
             </div>
         )
     }

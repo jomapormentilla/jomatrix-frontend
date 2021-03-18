@@ -1,12 +1,22 @@
 import React from 'react'
 
 class PostFooter extends React.Component {
+    renderHearts = () => {
+        let liked = this.props.post.likes.find(like => like.user_id === this.props.currentUser.id)
+        
+        if (!!liked) {
+            return <i className="bi-heart-fill" style={{ fontSize: '20px', marginRight: '10px', color: 'red' }}></i>
+        } else {
+            return <i className="bi-heart" style={{ fontSize: '20px', marginRight: '10px' }} onClick={ (e)=>{this.props.handleLikePost(e, this.props.post.id)} }></i>
+        }
+    }
+
     render(){
         return(
             <div style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                     <div style={{ padding: '5px 10px' }}>
-                        <i className="bi-heart" style={{ fontSize: '20px', marginRight: '10px' }}></i>
+                        { this.renderHearts() }
                         <i className="bi-chat" style={{ fontSize: '22px', marginRight: '10px' }}></i>
                     </div>
                     <div style={{ padding: '5px 10px' }}>0 Likes</div>

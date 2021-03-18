@@ -24,6 +24,11 @@ const reducer = (state = {
         case 'GET_POSTS':
             return { ...state, posts: action.posts, loading: false }
 
+        case 'LIKE_POST':
+            let idx = state.posts.findIndex(p => p.id === action.data.id)
+            // debugger
+            return { ...state, posts: [...state.posts.slice(0, idx), action.data, ...state.posts.slice(idx + 1)] }
+
         case 'GET_COMMENTS':
             return { ...state, comments: action.comments, loading: false }
 
@@ -31,13 +36,13 @@ const reducer = (state = {
             return { ...state, loading: action.loading }
             
         case 'LOGIN_USER':
-            return { ...state, loggedIn: action.loggedIn, currentUser: action.data }
+            return { ...state, loggedIn: action.loggedIn, currentUser: action.data, loading: false }
 
         case 'CREATE_USER':
-            return { ...state, loggedIn: true, currentUser: action.user }
+            return { ...state, loggedIn: true, currentUser: action.user, loading: false }
         
         case 'LOGOUT_USER':
-            return { ...state, loggedIn: false, currentUser: null }
+            return { ...state, loggedIn: false, currentUser: null, loading: false }
 
         default:
             return state

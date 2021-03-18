@@ -17,7 +17,7 @@ class ProfileMain extends React.Component {
     }
 
     renderPosts = () => {
-        return this.myPosts().length !== 0 ? this.myPosts().map(post => <Post key={ post.id } author={ this.props.currentUser } post={ post } />) : <h1>No Posts</h1>
+        return this.myPosts().length !== 0 ? this.myPosts().map(post => <Post key={ post.id } author={ this.props.currentUser } post={ post } currentUser={ this.props.currentUser } />) : <h1>No Posts</h1>
     }
 
     render(){
