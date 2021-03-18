@@ -1,4 +1,6 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { createComment } from '../../actions/commentActions'
 
 class CommentForm extends React.Component {
     state = {
@@ -8,24 +10,34 @@ class CommentForm extends React.Component {
     handleOnChange = e => {
         this.setState({
             input: e.target.value
-        }, ()=>console.log(this.state.input))
+        })
     }
 
     handleOnSubmit = e => {
         e.preventDefault()
-        console.log(e)
+
+        const data = {
+            content: this.state.input,
+            id: this.props.post.id,
+            type: 'Post'
+        }
+
+        this.props.createComment(sessionStorage.accessToken, data)
+        this.setState({
+            input: ''
+        })
     }
 
     render(){
         return(
             <div className="commentForm">
-                <form style={{ display: 'flex' }} onSubmit={ this.handleOnSubmit } >
-                    <textarea type="text" onChange={ this.handleOnChange } placeholder="Add a comment..."></textarea>
-                    <input type="submit" value="POST" />
+                <form onSubmit={ this.handleOnSubmit } style={{ display: 'flex' }}>
+                    <textarea type="text" onChange={ this.handleOnChange } value={ this.state.input } placeholder="Add a comment..."></textarea>
+                    <button type="submit">POST</button>
                 </form>
             </div>
         )
     }
 }
 
-export default CommentForm
+export default connect(null, { createComment })(CommentForm)

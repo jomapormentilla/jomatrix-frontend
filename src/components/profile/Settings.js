@@ -3,6 +3,7 @@ import { Route, Switch, useRouteMatch } from 'react-router-dom'
 
 import ProfileNav from './ProfileNav'
 import Edit from './Edit'
+import Map from '../Map'
 
 const styles = {
     display: 'flex',
@@ -34,7 +35,7 @@ const Settings = () => {
                     </Route>
 
                     <Route path={`${ path }/:test`}>
-                        Test
+                        <Map />
                     </Route>
                 </Switch>
             </div>

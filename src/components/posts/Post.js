@@ -23,7 +23,7 @@ class Post extends React.Component {
                 <PostContent post={ this.props.post } handleLikePost={ this.handleLikePost } handleUnlikePost={ this.handleUnlikePost } currentUser={ this.props.currentUser } />
                 <PostFooter post={ this.props.post } author={ this.props.author } handleLikePost={ this.handleLikePost } handleUnlikePost={ this.handleUnlikePost } currentUser={ this.props.currentUser } />
                 
-                <CommentsContainer postId={ this.props.post.id } />
+                <CommentsContainer post={ this.props.post } />
             </div>
         )
     }

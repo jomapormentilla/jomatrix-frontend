@@ -5,13 +5,6 @@ import PostForm from '../posts/PostForm'
 import Post from '../posts/Post'
 import Loading from '../Loading'
 
-// const styles = {
-//     display: 'flex',
-//     flexDirection: 'column',
-//     padding: '10px',
-//     width: '100%'
-// }
-
 class ProfileMain extends React.Component {
     myPosts = () => {
         return this.props.posts.filter(post => post.user_id === this.props.currentUser.id)

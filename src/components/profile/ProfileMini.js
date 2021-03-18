@@ -11,7 +11,7 @@ class ProfileMini extends React.Component {
                         Test
                     </div>
 
-                    <div class="footerMini" style={{ marginTop: '10px', color: '#aaa', padding: '5px' }}>
+                    <div className="footerMini" style={{ marginTop: '10px', color: '#aaa', padding: '5px' }}>
                         <p>
                             About
                             &nbsp; - &nbsp; 

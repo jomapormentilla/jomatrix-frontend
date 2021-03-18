@@ -19,7 +19,10 @@ class PostFooter extends React.Component {
                         { this.renderHearts() }
                         <i className="bi-chat" style={{ fontSize: '22px', marginRight: '10px' }}></i>
                     </div>
-                    <div style={{ padding: '5px 10px' }}>0 Likes</div>
+                    <div style={{ padding: '10px' }}>
+                        { this.props.post.likes.length }
+                        { this.props.post.likes.length === 1 ? ' Like' : ' Likes' }
+                    </div>
                 </div>
 
                 <div style={{ padding: '0px 10px' }}>

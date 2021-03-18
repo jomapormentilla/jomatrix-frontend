@@ -16,3 +16,31 @@ export const fetchComments = (jwt) => {
         })
     }
 }
+
+export const createComment = (jwt, data) => {
+    const commentInfo = {
+        comment: {
+            content: data.content,
+            commentable_type: data.type,
+            commentable_id: data.id
+        }
+    }
+
+    const configObj = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${ jwt }`
+        },
+        body: JSON.stringify(commentInfo)
+    }
+
+    return (dispatch) => {
+        fetch(url + `/comments`, configObj)
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+        })
+    }
+}
