@@ -27,7 +27,7 @@ class ProfileMain extends React.Component {
                 <br /><hr /><br />
                 <PostForm />
                 <br /><hr />
-                { this.renderPosts() }
+                { !!this.currentUser ? this.renderPosts() : null }
             </div>
         )
     }

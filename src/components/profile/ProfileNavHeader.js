@@ -7,7 +7,6 @@ class ProfileNavHeader extends React.Component {
     handleLogout = () => {
         sessionStorage.removeItem('accessToken')
         this.props.logout()
-        window.location.reload()
     }
 
     render(){

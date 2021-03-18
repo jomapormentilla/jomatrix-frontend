@@ -34,7 +34,7 @@ const reducer = (state = {
             return { ...state, loggedIn: action.loggedIn, currentUser: action.data }
         
         case 'LOGOUT_USER':
-            return { ...state, currentUser: null }
+            return { ...state, loggedIn: false, currentUser: null }
 
         default:
             return state
