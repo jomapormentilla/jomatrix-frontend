@@ -281,7 +281,7 @@ body, html {
         cursor: unset;
     }
 
-.commentList {
+.commentList, .postLikes {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -344,3 +344,11 @@ body, html {
     .footerMini a:hover {
         text-decoration: underline;
     }
+
+.grid {
+    display: flex;
+    flex: 1 32%;
+    border: solid 1px #fafafa;
+    height: 100px;
+    color: #777;
+}

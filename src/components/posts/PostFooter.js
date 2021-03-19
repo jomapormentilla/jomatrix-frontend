@@ -1,6 +1,13 @@
 import React from 'react'
 
+import Modal from '../Modal'
+import PostLikes from './PostLikes'
+
 class PostFooter extends React.Component {
+    state = {
+        modal: false
+    }
+
     renderHearts = () => {
         let liked = this.props.post.likes.find(like => like.user_id === this.props.currentUser.id)
 
@@ -11,15 +18,22 @@ class PostFooter extends React.Component {
         }
     }
 
+    toggleModal = e => {
+        this.setState(prevState => ({ 
+            modal: !prevState.modal
+         }))
+    }
+
     render(){
         return(
             <div style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
+                { !!this.state.modal ? <Modal toggleModal={ this.toggleModal } component={ <PostLikes likes={ this.props.post.likes } />} /> : null }
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                     <div style={{ padding: '5px 10px' }}>
                         { this.renderHearts() }
                         <i className="bi-chat" style={{ fontSize: '22px', marginRight: '10px' }}></i>
                     </div>
-                    <div style={{ padding: '10px', fontSize: '12px', fontWeight: '900', alignSelf: 'center' }}>
+                    <div style={{ padding: '10px', fontSize: '12px', fontWeight: '900', alignSelf: 'center', cursor: 'pointer' }} onClick={ this.toggleModal }>
                         { this.props.post.likes.length }
                         { this.props.post.likes.length === 1 ? ' Like' : ' Likes' }
                     </div>

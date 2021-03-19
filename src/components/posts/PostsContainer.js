@@ -12,7 +12,7 @@ class PostsContainer extends React.Component {
     }
 
     renderPosts = () => {
-        return this.props.posts.map(post => <Post key={ post.id } post={ post } author={ this.author(post.user_id) } currentUser={ this.props.currentUser } />)
+        return this.props.posts.map(post => <Post key={ post.id } post={ post } author={ this.author(post.user_id) } currentUser={ this.props.currentUser } users={ this.props.users } />)
     }
 
     render(){
