@@ -10,10 +10,12 @@ export const fetchPosts = jwt => {
         }
     }
 
+    const page = 1
+
     return (dispatch) => {
         dispatch({ type: 'LOADING' })
 
-        fetch(url + `/posts`, configObj)
+        fetch(url + `/posts?page=` + page, configObj)
         .then(res => res.json())
         .then(data => {
             dispatch({ type: 'GET_POSTS', posts: data, loading: false })
@@ -38,7 +40,8 @@ export const createPost = (jwt, data) => {
             const postInfo = {
                 post: {
                     title: data.description,
-                    content: resFile.location
+                    content: resFile.location,
+                    location: data.location
                 }
             }
         

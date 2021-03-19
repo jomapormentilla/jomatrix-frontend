@@ -271,6 +271,14 @@ body, html {
     .commentForm button {
         border: none;
         background: none;
+        font-weight: 900;
+        color:rgb(60, 16, 128);
+        cursor: pointer;
+    }
+
+    .commentForm button:disabled {
+        color:rgb(177, 145, 221);
+        cursor: unset;
     }
 
 .commentList {

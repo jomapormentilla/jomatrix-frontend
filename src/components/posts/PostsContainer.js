@@ -1,7 +1,5 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { fetchUsers } from '../../actions/userActions'
-import { fetchPosts } from '../../actions/postActions'
 
 import Loading from '../../components/Loading'
 import Post from './Post'
@@ -9,12 +7,6 @@ import PostSort from './PostSort'
 import PostsLoadMore from './PostsLoadMore'
 
 class PostsContainer extends React.Component {
-    componentDidMount(){
-        this.props.fetchPosts(sessionStorage.accessToken)
-        this.props.fetchUsers(sessionStorage.accessToken)
-        // console.log('PostsContainer Mounted')
-    }
-
     author = id => {
         return this.props.users.find(user => user.id === id)
     }
@@ -24,7 +16,6 @@ class PostsContainer extends React.Component {
     }
 
     render(){
-        // debugger
         return(
             <div className="postsContainer" style={{ marginBottom: '50px' }}>
                 <PostSort />
@@ -37,4 +28,4 @@ class PostsContainer extends React.Component {
 
 const mapStateToProps = state => ({ posts: state.posts, users: state.users, loading: state.loading, loggedIn: state.loggedIn, currentUser: state.currentUser })
 
-export default connect(mapStateToProps, { fetchUsers, fetchPosts })(PostsContainer)
+export default connect(mapStateToProps)(PostsContainer)

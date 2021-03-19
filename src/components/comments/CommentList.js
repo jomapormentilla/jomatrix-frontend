@@ -10,24 +10,27 @@ class CommentList extends React.Component {
     }
 
     renderComments = () => {
-        return this.props.comments.length > 0 ? this.props.comments.map(comment => <Comment key={ comment.id } comment={ comment } author={ this.author(comment.user_id) } />) : <p>No Comments</p>
+        return this.props.comments.length > 0 ? this.props.comments.reverse().map(comment => <Comment key={ comment.id } comment={ comment } author={ this.author(comment.user_id) } />) : <p>No Comments</p>
     }
 
     render(){
         return(
             <div className="commentList">
-                <div style={{ flex: '1' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start' }}>
-                        <img src={ this.props.post.content } alt={ this.props.post.content } style={{ width: '100px', marginRight: '15px' }} />
-                        <i className="bi-person-circle" style={{ fontSize: '30px', marginRight: '10px' }}></i>
-                        <div>
-                            { this.author(this.props.post.user_id).first_name } { this.author(this.props.post.user_id).last_name }
-                            <br /><span style={{ color: '#777' }}>Location</span> &nbsp;
-                            <span style={{ color: '#aaa' }} title={ moment(this.props.post.created_at).format("dddd, MMMM Do YYYY, h:mm:ss a") }>{ moment(this.props.post.created_at).fromNow() }</span>
-                        </div>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', paddingBottom: '10px' }}>
+                    <img src={ this.props.post.content } alt={ this.props.post.content } style={{ width: '100px', marginRight: '15px' }} />
+                    <i className="bi-person-circle" style={{ fontSize: '30px', marginRight: '10px', alignSelf: 'flex-start' }}></i>
+                    <div>
+                        <span style={{ fontWeight: '900' }}>{ this.author(this.props.post.user_id).username }</span> &nbsp;
+                        <span style={{ color: '#777' }}>{ this.props.post.title }</span>
+                        <br />
+                        <span style={{ color: '#777' }}>{ this.props.post.location }</span>
+                        <br />
+                        <span style={{ color: '#aaa' }} title={ moment(this.props.post.created_at).format("dddd, MMMM Do YYYY, h:mm:ss a") }>{ moment(this.props.post.created_at).fromNow() }</span>
                     </div>
+                </div>
 
-                    <div style={{ height: '100%', overflowY: 'scroll', marginTop: '10px' }}>
+                <div style={{ flex: '1', overflow: 'scroll', marginBottom: '10px' }}>
+                    <div style={{ height: '100%' }}>
                         { this.renderComments() }
                     </div>
                 </div>

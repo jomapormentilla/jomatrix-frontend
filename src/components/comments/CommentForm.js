@@ -33,7 +33,7 @@ class CommentForm extends React.Component {
             <div className="commentForm">
                 <form onSubmit={ this.handleOnSubmit } style={{ display: 'flex' }}>
                     <textarea type="text" onChange={ this.handleOnChange } value={ this.state.input } placeholder="Add a comment..."></textarea>
-                    <button type="submit">POST</button>
+                    { this.state.input === '' ? <button type="submit" disabled>POST</button> : <button type="submit">POST</button> }
                 </form>
             </div>
         )

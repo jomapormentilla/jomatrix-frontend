@@ -3,6 +3,8 @@ import './App.css';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { autoLogin } from './actions/loginActions'
+import { fetchUsers } from './actions/userActions'
+import { fetchPosts } from './actions/postActions'
 
 import Header from './components/Header'
 import Login from './components/Login'
@@ -17,13 +19,15 @@ import NotFound from './components/NotFound'
 
 class App extends React.Component {
   componentDidMount(){
-      this.props.autoLogin()
-      console.log('App Component Mounted')
+    this.props.fetchPosts(sessionStorage.accessToken)
+    this.props.fetchUsers(sessionStorage.accessToken)
+    this.props.autoLogin()
+    // console.log('PostsContainer Mounted')
   }
 
   render(){
     return (
-      <div className="App">
+      <div className="App" onScroll={ (e)=>{console.log("Hello")} }>
         <Router>
           { !!this.props.loggedIn ? <Header /> : null }
           <Switch>
@@ -75,4 +79,4 @@ const mapStateToProps = state => ({
   currentUser: state.currentUser
 })
 
-export default connect(mapStateToProps, { autoLogin })(App)
+export default connect(mapStateToProps, { autoLogin, fetchUsers, fetchPosts })(App)
