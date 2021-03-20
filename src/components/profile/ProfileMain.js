@@ -7,6 +7,7 @@ import Loading from '../Loading'
 
 class ProfileMain extends React.Component {
     componentDidMount(){
+        console.log('ProfileMain Mounted')
         window.scrollTo(0,0)
     }
 

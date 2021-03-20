@@ -8,9 +8,10 @@ import PostsLoadMore from './PostsLoadMore'
 
 class PostsContainer extends React.Component {
     componentDidMount(){
+        console.log('PostsContainer Mounted')
         window.scrollTo(0,0)
     }
-    
+
     author = id => {
         return this.props.users.find(user => user.id === id)
     }

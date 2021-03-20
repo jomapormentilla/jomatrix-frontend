@@ -25,7 +25,6 @@ class App extends React.Component {
     this.props.fetchUsers(sessionStorage.accessToken)
     this.props.fetchComments(sessionStorage.accessToken)
     this.props.autoLogin()
-    window.scrollTo(0,0)
   }
 
   handleInfiniteScroll = () => {
@@ -36,7 +35,6 @@ class App extends React.Component {
   }
   
   render(){
-    console.log(this.props)
     window.onscroll = () => this.handleInfiniteScroll()
     return (
       <div className="App">
