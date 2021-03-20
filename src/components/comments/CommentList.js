@@ -1,5 +1,6 @@
 import React from 'react'
 import moment from 'moment'
+import { Link } from 'react-router-dom'
 
 import Comment from './Comment'
 import CommentForm from './CommentForm'
@@ -18,14 +19,16 @@ class CommentList extends React.Component {
             <div className="commentList">
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', paddingBottom: '10px' }}>
                     <img src={ this.props.post.content } alt={ this.props.post.content } style={{ width: '100px', marginRight: '15px' }} />
-                    <i className="bi-person-circle" style={{ fontSize: '30px', marginRight: '10px', alignSelf: 'flex-start' }}></i>
-                    <div>
-                        <span style={{ fontWeight: '900' }}>{ this.author(this.props.post.user_id).username }</span> &nbsp;
-                        <span style={{ color: '#777' }}>{ this.props.post.title }</span>
-                        <br />
-                        <span style={{ color: '#777' }}>{ this.props.post.location }</span>
-                        <br />
-                        <span style={{ color: '#aaa' }} title={ moment(this.props.post.created_at).format("dddd, MMMM Do YYYY, h:mm:ss a") }>{ moment(this.props.post.created_at).fromNow() }</span>
+                    <div style={{ display: 'flex', alignSelf: 'flex-start' }}>
+                        <i className="bi-person-circle" style={{ fontSize: '30px', marginRight: '10px' }}></i>
+                        <div>
+                            <span style={{ fontWeight: '900' }}><Link to={`/profile/${ this.author(this.props.post.user_id).username }`} style={{ textDecoration: 'none' }}>{ this.author(this.props.post.user_id).username }</Link></span> &nbsp;
+                            <span style={{ color: '#777' }}>{ this.props.post.title }</span>
+                            <br />
+                            <span style={{ color: '#777' }}>{ this.props.post.location }</span>
+                            <br />
+                            <span style={{ color: '#aaa' }} title={ moment(this.props.post.created_at).format("dddd, MMMM Do YYYY, h:mm:ss a") }>{ moment(this.props.post.created_at).fromNow() }</span>
+                        </div>
                     </div>
                 </div>
 

@@ -1,6 +1,8 @@
 import React from 'react'
 import { Route, Switch, useRouteMatch } from 'react-router-dom'
+import { connect } from 'react-redux'
 
+import Loading from '../Loading'
 import ProfileNav from './ProfileNav'
 import Edit from './Edit'
 import Map from '../Map'
@@ -13,7 +15,7 @@ const styles = {
     height: 'fit-content'
 }
 
-const Settings = () => {
+const Settings = (props) => {
     
     let { path } = useRouteMatch()
     
@@ -22,9 +24,9 @@ const Settings = () => {
             <div style={ styles }>
                 <ProfileNav />
                 <Switch>
-                    <Route exact path={`${ path }/edit`}>
-                        <Edit />
-                    </Route>
+                    <Route exact path={`${ path }/edit`} component={() => {
+                        return props.currentUser === null ? <Loading /> : <Edit currentUser={ props.currentUser } />
+                    }} />
                     
                     <Route exact path={`${ path }/image`}>
                         Change Profile Picture
@@ -43,4 +45,6 @@ const Settings = () => {
     )
 }
 
-export default Settings
+const mapStateToProps = state => ({ currentUser: state.currentUser })
+
+export default connect(mapStateToProps)(Settings)

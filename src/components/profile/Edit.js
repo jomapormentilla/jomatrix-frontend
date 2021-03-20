@@ -1,5 +1,4 @@
 import React from 'react'
-import { connect } from 'react-redux'
 
 class Edit extends React.Component {
     state = {
@@ -70,6 +69,4 @@ class Edit extends React.Component {
     }
 }
 
-const mapStateToProps = state => ({ currentUser: state.currentUser })
-
-export default connect(mapStateToProps)(Edit)
+export default Edit

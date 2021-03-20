@@ -9,23 +9,17 @@ import Login from './components/Login'
 import Signup from './components/Signup'
 import Chat from './components/Chat'
 import ProfileContainer from './components/profile/ProfileContainer'
-import ProfileMini from './components/profile/ProfileMini'
-import ProfileUser from './components/profile/ProfileUser'
 import PostsContainer from './components/posts/PostsContainer'
 import Settings from './components/profile/Settings'
 import NotFound from './components/NotFound'
 
 class App extends React.Component {
-  componentDidMount(){
-    console.log('App Component Mounted')
-    this.props.autoLogin()
-  }
-  
   render(){
+    this.props.autoLogin()
     return (
       <div className="App">
         <Router>
-          { !!this.props.loggedIn ? <Header /> : null }
+          { !!sessionStorage.accessToken ? <Header /> : null }
           <Switch>
             <Route exact path="/">
               { !this.props.loggedIn ? <Login /> : <Redirect to="/feed" /> }
@@ -34,32 +28,22 @@ class App extends React.Component {
             <Route path="/signup">
               { !this.props.loggedIn ? <Signup /> : <Redirect to="/feed" /> }
             </Route>
-            
-            <Route path="/feed">
-              { !this.props.loggedIn ? <Redirect to="/" /> : (
-                <>
-                  <div style={{ display: 'flex', justifyContent: 'center' }}>
-                    <PostsContainer />
-                    <ProfileMini currentUser={ this.props.currentUser } />
-                  </div>
-                </>
-              ) }
-            </Route>
+          
+
+            <Route path="/feed" component={() => {
+              return !sessionStorage.accessToken ? <Redirect to="/" /> : <PostsContainer /> 
+            }} />
             
             <Route path="/chat">
-              { !this.props.loggedIn ? <Redirect to="/" /> : <Chat /> }
+              { !sessionStorage.accessToken ? <Redirect to="/" /> : <Chat /> }
             </Route>
 
-            <Route path="/profile">
-              { !this.props.loggedIn ? <Redirect to="/" /> : <ProfileContainer /> }
-            </Route>
+            <Route path="/profile" component={ (routeInfo) => {
+              return !sessionStorage.accessToken ? <Redirect to="/" /> : <ProfileContainer routeInfo={ routeInfo } />
+            }} />
             
             <Route path="/settings">
-              { !this.props.loggedIn ? <Redirect to="/" /> : <Settings /> }
-            </Route>
-
-            <Route path="/:username">
-              { !this.props.loggedIn ? <Redirect to="/" /> : <ProfileUser /> }
+              { !sessionStorage.accessToken ? <Redirect to="/" /> : <Settings /> }
             </Route>
 
             <Route path="/*" component={ NotFound } />
@@ -71,9 +55,7 @@ class App extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  loggedIn: state.loggedIn,
-  currentUser: state.currentUser,
-  stopInfiniteScroll: state.stopInfiniteScroll
+  loggedIn: state.loggedIn
 })
 
 export default connect(mapStateToProps, { autoLogin })(App)

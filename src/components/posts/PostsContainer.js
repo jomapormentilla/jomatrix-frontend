@@ -8,10 +8,10 @@ import Loading from '../../components/Loading'
 import Post from './Post'
 import PostSort from './PostSort'
 import PostsLoadMore from './PostsLoadMore'
+import ProfileMini from '../profile/ProfileMini'
 
 class PostsContainer extends React.Component {
     componentDidMount(){
-        console.log('PostsContainer Mounted')
         this.page = 0
         this.props.fetchPosts(sessionStorage.accessToken, this.page)
         this.props.fetchUsers(sessionStorage.accessToken)
@@ -19,12 +19,17 @@ class PostsContainer extends React.Component {
         window.scrollTo(0,0)
     }
 
+    componentWillUnmount(){
+        window.removeEventListener('scroll', this.handleInfiniteScroll)
+    }
+
     handleInfiniteScroll = () => {
         if (window.innerHeight === document.querySelector('.App').getBoundingClientRect().bottom && !this.props.stopInfiniteScroll) {
-          this.page++
-          this.props.fetchPosts(sessionStorage.accessToken, this.page)
+            this.page++
+            this.props.fetchPosts(sessionStorage.accessToken, this.page)
+            console.log(this.props.stopInfiniteScroll)
         }
-      }
+    }
 
     author = id => {
         return this.props.users.find(user => user.id === id)
@@ -35,17 +40,20 @@ class PostsContainer extends React.Component {
     }
 
     render(){
-        window.onscroll = () => this.handleInfiniteScroll()
+        window.addEventListener('scroll', this.handleInfiniteScroll)
         return(
-            <div className="postsContainer" style={{ marginBottom: '50px' }}>
-                <PostSort />
-                { this.props.loading || this.props.posts.length === 0 || this.props.users.length === 0 ? <Loading /> : this.renderPosts() }
-                <PostsLoadMore />
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+                <div className="postsContainer" style={{ marginBottom: '50px' }}>
+                    <PostSort />
+                    { this.props.loading || this.props.posts.length === 0 || this.props.users.length === 0 || this.props.currentUser === null ? <Loading /> : this.renderPosts() }
+                    <PostsLoadMore />
+                </div>
+                { !!this.props.currentUser ? <ProfileMini currentUser={ this.props.currentUser } /> : 'Loading...' }
             </div>
         )
     }
 }
 
-const mapStateToProps = state => ({ posts: state.posts, users: state.users, loading: state.loading, loggedIn: state.loggedIn, currentUser: state.currentUser })
+const mapStateToProps = state => ({ posts: state.posts, users: state.users, loading: state.loading, loggedIn: state.loggedIn, currentUser: state.currentUser, stopInfiniteScroll: state.stopInfiniteScroll })
 
 export default connect(mapStateToProps, { fetchUsers, fetchPosts, fetchComments })(PostsContainer)

@@ -8,7 +8,6 @@ import Loading from '../Loading'
 
 class ProfileMain extends React.Component {
     componentDidMount(){
-        console.log('ProfileMain Mounted')
         window.scrollTo(0,0)
     }
 
@@ -25,15 +24,15 @@ class ProfileMain extends React.Component {
             <div className="profileMain" style={{ marginBottom: '50px' }}>
                 <p>Profile info goes here</p>
                 <br /><hr /><br />
-                <PostForm />
+                { this.props.currentUser === null ? 'Loading...' : <PostForm currentUser={ this.props.currentUser } /> }
                 <br /><hr />
-                { this.currentUser === null || this.props.loading ? <Loading /> : this.renderPosts() }
+                { this.props.currentUser === null || this.props.loading ? <Loading /> : this.renderPosts() }
                 <PostsLoadMore />
             </div>
         )
     }
 }
 
-const mapStateToProps = state => ({ posts: state.posts, currentUser: state.currentUser })
+const mapStateToProps = state => ({ posts: state.posts, currentUser: state.currentUser, loggedIn: state.loggedIn })
 
 export default connect(mapStateToProps)(ProfileMain)

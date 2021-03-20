@@ -63,6 +63,4 @@ class PostForm extends React.Component {
     }
 }
 
-const mapStateToProps = state => ({ currentUser: state.currentUser })
-
-export default connect(mapStateToProps, { createPost })(PostForm)
+export default connect(null, { createPost })(PostForm)

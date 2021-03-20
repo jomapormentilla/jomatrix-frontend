@@ -1,5 +1,6 @@
 import React from 'react'
 import moment from 'moment'
+import { Link } from 'react-router-dom'
 
 class Comment extends React.Component {
     render(){
@@ -10,7 +11,7 @@ class Comment extends React.Component {
 
                     <div style={{ display: 'flex', flexDirection: 'column' }}>
                         <div>
-                            <span style={{ fontWeight: '900' }}>{ !!this.props.author ? this.props.author.username : null }</span> &nbsp;
+                            <span style={{ fontWeight: '900' }}>{ !!this.props.author ? <Link to={ this.props.author.username } style={{ textDecoration: 'none', color: 'rgb(42, 7, 96)' }}>{ this.props.author.username }</Link> : null }</span> &nbsp;
                             <span style={{ color: '#777' }}>{ this.props.comment.content }</span>
                         </div>
                         <span style={{ color: '#aaa' }}>{ moment(this.props.comment.created_at).fromNow() }</span>

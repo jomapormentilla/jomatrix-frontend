@@ -1,5 +1,6 @@
 import React from 'react'
 import moment from 'moment'
+import { Link } from 'react-router-dom'
 
 class PostHeader extends React.Component {
     render(){
@@ -8,7 +9,7 @@ class PostHeader extends React.Component {
                 <div style={{ display: 'flex', alignItems: 'center' }}>
                     <i className="bi-person-circle" style={{ fontSize: '30px', marginRight: '10px' }}></i>
                     <div>
-                        { this.props.author.first_name } { this.props.author.last_name }
+                        <Link to={`/profile/${ this.props.author.username }`} style={{ textDecoration: 'none', color: '#000' }}>{ this.props.author.first_name } { this.props.author.last_name }</Link>
                         <br /><span style={{ color: '#777' }}>{ this.props.post.location }</span> &nbsp;
                         <span style={{ color: '#aaa' }} title={ moment(this.props.post.created_at).format("dddd, MMMM Do YYYY, h:mm:ss a") }>{ moment(this.props.post.created_at).fromNow() }</span>
                     </div>

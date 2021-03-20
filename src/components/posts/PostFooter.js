@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import Modal from '../Modal'
 import PostLikes from './PostLikes'
@@ -12,9 +13,9 @@ class PostFooter extends React.Component {
         let liked = this.props.post.likes.find(like => like.user_id === this.props.currentUser.id)
 
         if (!!liked) {
-            return <i className="bi-heart-fill" style={{ fontSize: '20px', marginRight: '10px', color: 'red' }} onClick={ (e)=>{this.props.handleUnlikePost(e, liked.id)} }></i>
+            return <i className="bi-heart-fill" style={{ fontSize: '20px', marginRight: '10px', color: 'red', cursor: 'pointer' }} onClick={ (e)=>{this.props.handleUnlikePost(e, liked.id)} }></i>
         } else {
-            return <i className="bi-heart" style={{ fontSize: '20px', marginRight: '10px' }} onClick={ (e)=>{this.props.handleLikePost(e, this.props.post.id)} }></i>
+            return <i className="bi-heart" style={{ fontSize: '20px', marginRight: '10px', cursor: 'pointer' }} onClick={ (e)=>{this.props.handleLikePost(e, this.props.post.id)} }></i>
         }
     }
 
@@ -40,7 +41,7 @@ class PostFooter extends React.Component {
                 </div>
 
                 <div style={{ padding: '0px 10px' }}>
-                    <span style={{ fontWeight: '900' }}>{ !!this.props.author ? this.props.author.username : null }</span> &nbsp;
+                    <span style={{ fontWeight: '900' }}>{ !!this.props.author ? <Link to={`/profile/${ this.props.author.username }`} style={{ textDecoration: 'none', color: 'rgb(42, 7, 96)' }}>{ this.props.author.username }</Link> : null }</span> &nbsp;
                     <span style={{ color: '#777' }}>{ this.props.post.title }</span>
                     <br />
                 </div>
