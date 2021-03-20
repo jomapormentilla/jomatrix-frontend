@@ -21,7 +21,11 @@ export const fetchPosts = (jwt, page) => {
             if (page === 0) {
                 dispatch({ type: 'GET_POSTS', posts: data })
             } else {
-                dispatch({ type: 'MORE_POSTS', posts: data })
+                if (data.length !== 0) {
+                    dispatch({ type: 'MORE_POSTS', posts: data })
+                } else {
+                    dispatch({ type: 'STOP_INFINITE_SCROLL' })
+                }
             }
         })
     }

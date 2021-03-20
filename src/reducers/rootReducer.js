@@ -15,7 +15,8 @@ const reducer = (state = {
     comments: [],
     loading: false,
     loggedIn: false,
-    currentUser: null
+    currentUser: null,
+    stopInfiniteScroll: false
 
 }, action) => {
     let idx
@@ -54,6 +55,9 @@ const reducer = (state = {
 
         case 'LOADING':
             return { ...state, loading: true }
+
+        case 'STOP_INFINITE_SCROLL':
+            return { ...state, stopInfiniteScroll: true }
 
         default:
             return state

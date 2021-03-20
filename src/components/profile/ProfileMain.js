@@ -6,6 +6,10 @@ import Post from '../posts/Post'
 import Loading from '../Loading'
 
 class ProfileMain extends React.Component {
+    componentDidMount(){
+        window.scrollTo(0,0)
+    }
+
     myPosts = () => {
         return this.props.posts.filter(post => post.user_id === this.props.currentUser.id)
     }

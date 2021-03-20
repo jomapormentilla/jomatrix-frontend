@@ -25,17 +25,18 @@ class App extends React.Component {
     this.props.fetchUsers(sessionStorage.accessToken)
     this.props.fetchComments(sessionStorage.accessToken)
     this.props.autoLogin()
-    // console.log('PostsContainer Mounted')
+    window.scrollTo(0,0)
   }
 
   handleInfiniteScroll = () => {
-    if (window.innerHeight === document.querySelector('.App').getBoundingClientRect().bottom) {
+    if (window.innerHeight === document.querySelector('.App').getBoundingClientRect().bottom && !this.props.stopInfiniteScroll) {
       this.page++
       this.props.fetchPosts(sessionStorage.accessToken, this.page)
     }
   }
   
   render(){
+    console.log(this.props)
     window.onscroll = () => this.handleInfiniteScroll()
     return (
       <div className="App">
@@ -87,7 +88,8 @@ class App extends React.Component {
 
 const mapStateToProps = state => ({
   loggedIn: state.loggedIn,
-  currentUser: state.currentUser
+  currentUser: state.currentUser,
+  stopInfiniteScroll: state.stopInfiniteScroll
 })
 
 export default connect(mapStateToProps, { autoLogin, fetchUsers, fetchPosts, fetchComments })(App)
