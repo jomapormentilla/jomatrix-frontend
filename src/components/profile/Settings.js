@@ -1,10 +1,12 @@
 import React from 'react'
-import { Route, Switch, useRouteMatch } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { fetchUsers } from '../../actions/userActions'
+import { fetchPosts } from '../../actions/postActions'
 
 import Loading from '../Loading'
 import ProfileNav from './ProfileNav'
-import Edit from './Edit'
+import ProfileEdit from './ProfileEdit'
 import Map from '../Map'
 
 const styles = {
@@ -15,36 +17,40 @@ const styles = {
     height: 'fit-content'
 }
 
-const Settings = (props) => {
+class Settings extends React.Component {
+    componentDidMount(){
+        if (this.props.posts.length === 0) { this.props.fetchPosts(sessionStorage.accessToken) }
+        if (this.props.users.length === 0) { this.props.fetchUsers(sessionStorage.accessToken) }
+    }
     
-    let { path } = useRouteMatch()
+    render(){
+        return(
+            <div className="settings">
+                <div style={ styles }>
+                    <ProfileNav />
+                    <Switch>
+                        <Route exact path={`${ this.props.routeInfo.match.path }/edit`} component={() => {
+                            return this.props.currentUser === null ? <Loading /> : <ProfileEdit currentUser={ this.props.currentUser } />
+                        }} />
+                        
+                        <Route exact path={`${ this.props.routeInfo.match.path }/image`}>
+                            Change Profile Picture
+                        </Route>
     
-    return(
-        <div className="settings">
-            <div style={ styles }>
-                <ProfileNav />
-                <Switch>
-                    <Route exact path={`${ path }/edit`} component={() => {
-                        return props.currentUser === null ? <Loading /> : <Edit currentUser={ props.currentUser } />
-                    }} />
-                    
-                    <Route exact path={`${ path }/image`}>
-                        Change Profile Picture
-                    </Route>
-
-                    <Route exact path={`${ path }/password`}>
-                        Password Change
-                    </Route>
-
-                    <Route path={`${ path }/:test`}>
-                        <Map />
-                    </Route>
-                </Switch>
+                        <Route exact path={`${ this.props.routeInfo.match.path }/password`}>
+                            Password Change
+                        </Route>
+    
+                        <Route path={`${ this.props.routeInfo.match.path }/:test`}>
+                            <Map />
+                        </Route>
+                    </Switch>
+                </div>
             </div>
-        </div>
-    )
+        )
+    }
 }
 
-const mapStateToProps = state => ({ currentUser: state.currentUser })
+const mapStateToProps = state => ({ currentUser: state.currentUser, users: state.users, posts: state.posts })
 
-export default connect(mapStateToProps)(Settings)
+export default connect(mapStateToProps, { fetchUsers, fetchPosts })(Settings)

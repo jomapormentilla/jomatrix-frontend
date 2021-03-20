@@ -53,3 +53,37 @@ export const createUser = (data) => {
         })
     }
 }
+
+export const updateUser = (jwt, data) => {
+    const userInfo = {
+        user: {
+            first_name: data.fname,
+            last_name: data.lname,
+            email: data.email,
+            username: data.username,
+            website: data.website,
+            bio: data.bio,
+            gender: data.gender
+        }
+    }
+
+    const configObj = {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${ jwt }`
+        },
+        body: JSON.stringify(userInfo)
+    }
+
+    return (dispatch) => {
+        dispatch({ type: 'LOADING' })
+
+        fetch(url + `/users/` + data.id, configObj)
+        .then(res => res.json())
+        .then(data => {
+            dispatch({ type: 'UPDATE_USER', data })
+        })
+    }
+}

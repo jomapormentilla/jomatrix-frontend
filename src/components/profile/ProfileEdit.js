@@ -1,28 +1,17 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { updateUser } from '../../actions/userActions'
 
-class Edit extends React.Component {
+class ProfileEdit extends React.Component {
     state = {
-        id: '',
-        fname: '',
-        lname: '',
-        email: '',
-        username: '',
-        website: '',
-        bio: '',
-        gender: ''
-    }
-
-    componentDidMount(){
-        this.setState({
-            id: this.props.currentUser.id,
-            fname: this.props.currentUser.first_name,
-            lname: this.props.currentUser.last_name,
-            email: this.props.currentUser.email,
-            username: this.props.currentUser.username || '',
-            website: this.props.currentUser.website || '',
-            bio: this.props.currentUser.bio || '',
-            gender: this.props.currentUser.gender || '',
-        })
+        id: this.props.currentUser.id || '',
+        fname: this.props.currentUser.first_name || '',
+        lname: this.props.currentUser.last_name || '',
+        email: this.props.currentUser.email || '',
+        username: this.props.currentUser.username || '',
+        website: this.props.currentUser.website || '',
+        bio: this.props.currentUser.bio || '',
+        gender: this.props.currentUser.gender || ''
     }
 
     handleOnChange = e => {
@@ -33,7 +22,15 @@ class Edit extends React.Component {
 
     handleOnSubmit = e => {
         e.preventDefault()
-        console.log(this.state)
+        this.props.updateUser(sessionStorage.accessToken, this.state)
+    }
+
+    componentWillUnmount(){
+        console.log('ProfileEdit Unmounting...')
+    }
+
+    componentDidUpdate(){
+        console.log('ProfileEdit Updated...')
     }
 
     render(){
@@ -69,4 +66,4 @@ class Edit extends React.Component {
     }
 }
 
-export default Edit
+export default connect(null, { updateUser })(ProfileEdit)

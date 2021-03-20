@@ -42,9 +42,9 @@ class App extends React.Component {
               return !sessionStorage.accessToken ? <Redirect to="/" /> : <ProfileContainer routeInfo={ routeInfo } />
             }} />
             
-            <Route path="/settings">
-              { !sessionStorage.accessToken ? <Redirect to="/" /> : <Settings /> }
-            </Route>
+            <Route path="/settings" component={(routeInfo) => {
+              return !sessionStorage.accessToken ? <Redirect to="/" /> : <Settings routeInfo={ routeInfo } />
+            }} />
 
             <Route path="/*" component={ NotFound } />
           </Switch>

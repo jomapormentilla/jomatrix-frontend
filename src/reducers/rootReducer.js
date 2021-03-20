@@ -27,6 +27,11 @@ const reducer = (state = {
         case 'CREATE_USER':
             return { ...state, loggedIn: true, currentUser: action.user, loading: false }
 
+        case 'UPDATE_USER':
+            idx = state.users.findIndex(user => user.id === action.data.id)
+            debugger
+            return { ...state, users: [...state.users.slice(0, idx), action.data, ...state.users.slice(idx + 1)], loading: false }
+
         case 'LOGIN_USER':
             return { ...state, loggedIn: action.loggedIn, currentUser: action.data, loading: false }
         
