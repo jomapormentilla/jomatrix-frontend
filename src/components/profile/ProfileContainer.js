@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import ProfileMain from './ProfileMain'
 
-const Profile = () => {
+const ProfileContainer = () => {
     return(
         <div className="profile">
             <div>
@@ -15,4 +15,4 @@ const Profile = () => {
 
 const mapStateToProps = state => ({ currentUser: state.currentUser })
 
-export default connect(mapStateToProps)(Profile)
+export default connect(mapStateToProps)(ProfileContainer)

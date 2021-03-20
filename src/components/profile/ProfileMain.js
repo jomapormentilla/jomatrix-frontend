@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 
 import PostForm from '../posts/PostForm'
 import Post from '../posts/Post'
+import PostsLoadMore from '../posts/PostsLoadMore'
 import Loading from '../Loading'
 
 class ProfileMain extends React.Component {
@@ -21,12 +22,13 @@ class ProfileMain extends React.Component {
 
     render(){
         return(
-            <div className="profileMain">
+            <div className="profileMain" style={{ marginBottom: '50px' }}>
                 <p>Profile info goes here</p>
                 <br /><hr /><br />
                 <PostForm />
                 <br /><hr />
                 { this.currentUser === null || this.props.loading ? <Loading /> : this.renderPosts() }
+                <PostsLoadMore />
             </div>
         )
     }

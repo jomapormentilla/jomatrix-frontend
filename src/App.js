@@ -3,9 +3,6 @@ import './App.css';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { autoLogin } from './actions/loginActions'
-import { fetchUsers } from './actions/userActions'
-import { fetchPosts } from './actions/postActions'
-import { fetchComments } from './actions/commentActions'
 
 import Header from './components/Header'
 import Login from './components/Login'
@@ -20,22 +17,11 @@ import NotFound from './components/NotFound'
 
 class App extends React.Component {
   componentDidMount(){
-    this.page = 0
-    this.props.fetchPosts(sessionStorage.accessToken, this.page)
-    this.props.fetchUsers(sessionStorage.accessToken)
-    this.props.fetchComments(sessionStorage.accessToken)
+    console.log('App Component Mounted')
     this.props.autoLogin()
-  }
-
-  handleInfiniteScroll = () => {
-    if (window.innerHeight === document.querySelector('.App').getBoundingClientRect().bottom && !this.props.stopInfiniteScroll) {
-      this.page++
-      this.props.fetchPosts(sessionStorage.accessToken, this.page)
-    }
   }
   
   render(){
-    window.onscroll = () => this.handleInfiniteScroll()
     return (
       <div className="App">
         <Router>
@@ -90,4 +76,4 @@ const mapStateToProps = state => ({
   stopInfiniteScroll: state.stopInfiniteScroll
 })
 
-export default connect(mapStateToProps, { autoLogin, fetchUsers, fetchPosts, fetchComments })(App)
+export default connect(mapStateToProps, { autoLogin })(App)
