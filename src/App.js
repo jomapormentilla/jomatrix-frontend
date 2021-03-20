@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { autoLogin } from './actions/loginActions'
 import { fetchUsers } from './actions/userActions'
 import { fetchPosts } from './actions/postActions'
+import { fetchComments } from './actions/commentActions'
 
 import Header from './components/Header'
 import Login from './components/Login'
@@ -19,15 +20,25 @@ import NotFound from './components/NotFound'
 
 class App extends React.Component {
   componentDidMount(){
-    this.props.fetchPosts(sessionStorage.accessToken)
+    this.page = 0
+    this.props.fetchPosts(sessionStorage.accessToken, this.page)
     this.props.fetchUsers(sessionStorage.accessToken)
+    this.props.fetchComments(sessionStorage.accessToken)
     this.props.autoLogin()
     // console.log('PostsContainer Mounted')
   }
 
+  handleInfiniteScroll = () => {
+    if (window.innerHeight === document.querySelector('.App').getBoundingClientRect().bottom) {
+      this.page++
+      this.props.fetchPosts(sessionStorage.accessToken, this.page)
+    }
+  }
+  
   render(){
+    window.onscroll = () => this.handleInfiniteScroll()
     return (
-      <div className="App" onScroll={ (e)=>{console.log("Hello")} }>
+      <div className="App">
         <Router>
           { !!this.props.loggedIn ? <Header /> : null }
           <Switch>
@@ -79,4 +90,4 @@ const mapStateToProps = state => ({
   currentUser: state.currentUser
 })
 
-export default connect(mapStateToProps, { autoLogin, fetchUsers, fetchPosts })(App)
+export default connect(mapStateToProps, { autoLogin, fetchUsers, fetchPosts, fetchComments })(App)

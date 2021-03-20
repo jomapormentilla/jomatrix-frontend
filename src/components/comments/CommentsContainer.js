@@ -12,7 +12,7 @@ class CommentsContainer extends React.Component {
     }
 
     componentDidMount(){
-        this.props.fetchComments(sessionStorage.accessToken)
+        
     }
 
     comments = () => {

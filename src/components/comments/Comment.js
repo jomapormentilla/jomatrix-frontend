@@ -16,7 +16,7 @@ class Comment extends React.Component {
                         <span style={{ color: '#aaa' }}>{ moment(this.props.comment.created_at).fromNow() }</span>
                     </div>
                 </div>
-                <i className="bi-heart" style={{ marginRight: '5px' }}></i>
+                <i className="bi-heart" style={{ marginRight: '5px', alignSelf: 'center' }}></i>
             </div>
         )
     }

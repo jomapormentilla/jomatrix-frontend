@@ -2,7 +2,7 @@ import { uploadFile } from 'react-s3'
 import { url } from './baseUrl'
 import env from 'react-dotenv'
 
-export const fetchPosts = jwt => {
+export const fetchPosts = (jwt, page) => {
     const configObj = {
         method: 'GET',
         headers: {
@@ -10,15 +10,19 @@ export const fetchPosts = jwt => {
         }
     }
 
-    const page = 1
-
     return (dispatch) => {
-        dispatch({ type: 'LOADING' })
+        if (page === 0) {
+            dispatch({ type: 'LOADING' })
+        }
 
         fetch(url + `/posts?page=` + page, configObj)
         .then(res => res.json())
         .then(data => {
-            dispatch({ type: 'GET_POSTS', posts: data, loading: false })
+            if (page === 0) {
+                dispatch({ type: 'GET_POSTS', posts: data })
+            } else {
+                dispatch({ type: 'MORE_POSTS', posts: data })
+            }
         })
     }
 }
@@ -30,7 +34,6 @@ export const createPost = (jwt, data) => {
         accessKeyId: env.AWS_ACCESS_KEY_ID,
         secretAccessKey: env.AWS_SECRET_ACCESS_KEY
     }
-    debugger
     
     return dispatch => {
         dispatch({ type: 'LOADING' })
@@ -44,6 +47,8 @@ export const createPost = (jwt, data) => {
                     location: data.location
                 }
             }
+
+            debugger
         
             const configObj = {
                 method: 'POST',

@@ -35,6 +35,9 @@ const reducer = (state = {
         case 'GET_POSTS':
             return { ...state, posts: action.posts, loading: false }
 
+        case 'MORE_POSTS':
+            return { ...state, posts: [...state.posts.concat(action.posts)], loading: false }
+
         case 'CREATE_POST':
             return { ...state, posts: [action.data, ...state.posts]}
 

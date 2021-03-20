@@ -40,7 +40,7 @@ class PostFooter extends React.Component {
                 </div>
 
                 <div style={{ padding: '0px 10px' }}>
-                    <span style={{ fontWeight: '900' }}>{ !!this.props.author ? this.props.author.first_name : null }</span> &nbsp;
+                    <span style={{ fontWeight: '900' }}>{ !!this.props.author ? this.props.author.username : null }</span> &nbsp;
                     <span style={{ color: '#777' }}>{ this.props.post.title }</span>
                     <br />
                 </div>
