@@ -2,10 +2,24 @@ import React from 'react'
 import moment from 'moment'
 import { Link } from 'react-router-dom'
 
+import Modal from '../Modal'
+import PostMenu from './PostMenu'
+
 class PostHeader extends React.Component {
+    state = {
+        modal: false
+    }
+
+    toggleModal = e => {
+        this.setState(prevState => ({ 
+            modal: !prevState.modal
+         }))
+    }
+
     render(){
         return(
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '5px 10px' }}>
+                { !!this.state.modal ? <Modal toggleModal={ this.toggleModal } component={ <PostMenu />} /> : null }
                 <div style={{ display: 'flex', alignItems: 'center' }}>
                     { !!this.props.author.image ? <div className="profileImageContainer"><img src={ this.props.author.image } alt="profile" class="profileImage" /></div>: <i className="bi-person-circle" style={{ fontSize: '30px', marginRight: '10px' }}></i> }
                     <div>
@@ -15,7 +29,7 @@ class PostHeader extends React.Component {
                     </div>
                 </div>
 
-                <div>
+                <div onClick={ this.toggleModal } style={{ cursor: 'pointer' }}>
                     <i className="bi-three-dots" style={{ fontSize: '20px' }}></i>
                 </div>
             </div>
