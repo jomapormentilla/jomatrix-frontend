@@ -11,7 +11,7 @@ class CommentList extends React.Component {
     }
 
     renderComments = () => {
-        return this.props.comments.length > 0 ? this.props.comments.reverse().map(comment => <Comment key={ comment.id } comment={ comment } author={ this.author(comment.user_id) } />) : <p>No Comments</p>
+        return this.props.comments.length > 0 ? this.props.comments.reverse().map(comment => <Comment key={ comment.id } comment={ comment } author={ this.author(comment.user_id) } commentId={ comment.id } />) : <p>No Comments</p>
     }
 
     render(){

@@ -1,8 +1,28 @@
 import React from 'react'
 import moment from 'moment'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { likeComment, unlikeComment } from '../../actions/commentActions'
 
 class Comment extends React.Component {
+    handleLikeComment = (e, commentId) => {
+        this.props.likeComment(sessionStorage.accessToken, commentId)
+    }
+
+    handleUnlikeComment = (e, postId) => {
+        this.props.unlikeComment(sessionStorage.accessToken, postId)
+    }
+
+    renderHearts = () => {
+        let liked = this.props.comment.likes.find(like => like.user_id === this.props.currentUser.id)
+
+        if (!!liked) {
+            return <i className="bi-heart-fill" style={{ marginRight: '5px', alignSelf: 'center', color: 'red', cursor: 'pointer' }} onClick={ (e)=>{this.handleUnlikeComment(e, liked.id)} }></i>
+        } else {
+            return <i className="bi-heart" style={{ marginRight: '5px', alignSelf: 'center', cursor: 'pointer' }} onClick={ (e)=>{this.handleLikeComment(e, this.props.comment.id)} }></i>
+        }
+    }
+
     render(){
         return(
             <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '5px' }}>
@@ -17,10 +37,12 @@ class Comment extends React.Component {
                         <span style={{ color: '#aaa' }}>{ moment(this.props.comment.created_at).fromNow() }</span>
                     </div>
                 </div>
-                <i className="bi-heart" style={{ marginRight: '5px', alignSelf: 'center' }}></i>
+                { this.renderHearts() }
             </div>
         )
     }
 }
 
-export default Comment
+const mapStateToProps = state => ({ currentUser: state.currentUser })
+
+export default connect(mapStateToProps, { likeComment, unlikeComment })(Comment)

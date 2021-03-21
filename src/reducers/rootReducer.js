@@ -57,6 +57,10 @@ const reducer = (state = {
             idx = state.posts.findIndex(p => p.id === action.data.id)
             return { ...state, posts: [...state.posts.slice(0, idx), action.data, ...state.posts.slice(idx + 1)], loading: false, comments: [...state.comments, action.data.comments[action.data.comments.length - 1]] }
 
+        case 'LIKE_COMMENT':
+            idx = state.comments.findIndex(c => c.id === action.data.id)
+            return { ...state, comments: [...state.comments.slice(0, idx), action.data, ...state.comments.slice(idx + 1)], loading: false }
+
         case 'LOADING':
             return { ...state, loading: true }
 
