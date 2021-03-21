@@ -276,6 +276,8 @@ body, html {
     min-height: 450px;
     height: auto;
     background-color: #000;
+    border-top: solid 1px #eee;
+    border-bottom: solid 1px #eee;
 }
 
 .commentsContainer {

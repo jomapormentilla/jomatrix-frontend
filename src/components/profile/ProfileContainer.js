@@ -23,7 +23,7 @@ class ProfileContainer extends React.Component {
                         if (this.props.users.length !== 0) {
                             const user = this.props.users.find(user => user.username === routeInfo.match.params.username)
         
-                            return !!user ? <ProfileUser user={ user } /> : <NotFound />
+                            return !!user ? <ProfileUser user={ user } posts={ this.props.posts } /> : <NotFound />
                         } else {
                             return <Loading />
                         }

@@ -16,7 +16,9 @@ class PostsContainer extends React.Component {
         this.props.fetchPosts(sessionStorage.accessToken, this.page)
         this.props.fetchUsers(sessionStorage.accessToken)
         this.props.fetchComments(sessionStorage.accessToken)
+        
         window.scrollTo(0,0)
+        window.addEventListener('scroll', this.handleInfiniteScroll)
     }
 
     componentWillUnmount(){
@@ -24,7 +26,7 @@ class PostsContainer extends React.Component {
     }
 
     handleInfiniteScroll = () => {
-        if (window.innerHeight === document.querySelector('.App').getBoundingClientRect().bottom && !this.props.stopInfiniteScroll) {
+        if (window.innerHeight > document.querySelector('.App').getBoundingClientRect().bottom-1 && !this.props.stopInfiniteScroll) {
             this.page++
             this.props.fetchPosts(sessionStorage.accessToken, this.page)
             console.log(this.props.stopInfiniteScroll)
@@ -40,7 +42,6 @@ class PostsContainer extends React.Component {
     }
 
     render(){
-        window.addEventListener('scroll', this.handleInfiniteScroll)
         return(
             <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <div className="postsContainer" style={{ marginBottom: '50px' }}>

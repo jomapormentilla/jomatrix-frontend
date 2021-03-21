@@ -2,6 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { updateProfilePicture } from '../../actions/userActions'
 
+import Loading from '../Loading'
+
 class ProfilePicture extends React.Component {
     state = {
         id: '',
@@ -40,12 +42,12 @@ class ProfilePicture extends React.Component {
         if (!!this.props.currentUser.image) {
             return <img src={ this.props.currentUser.image } alt={`profile`} className="profileImage" />
         } else {
-            return <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '200px', border: 'solid 1px #aaa', backgroundColor: '#f7f7f7'}}>{ this.props.loading ? 'Loading' : 'Select an image to upload' }</div>
+            return <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '200px', border: 'solid 1px #aaa', backgroundColor: '#f7f7f7'}}>{ this.props.loading ? <Loading /> : 'Select an image to upload' }</div>
         }
     }
 
     renderButton = () => {
-        if (!!this.props.currentUser.image) {
+        if (!!this.props.currentUser.image || !!this.state.image) {
             return <button type="submit" style={{ marginTop: '10px' }}>{ !!this.state.image ? 'Upload Image' : 'Remove Image' }</button>
         } else {
             return <button type="submit" style={{ marginTop: '10px' }} disabled>Select Image</button>

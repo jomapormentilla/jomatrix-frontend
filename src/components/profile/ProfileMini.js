@@ -5,7 +5,7 @@ class ProfileMini extends React.Component {
         return(
             <div className="profileMini">
                 <div style={{ position: 'fixed', width: 'inherit' }}>
-                    <div style={{ display: 'flex', textAlign: 'left', backgroundColor: '#fff', width: '100%', padding: '10px', borderRadius: '5px' }}>
+                    <div style={{ display: 'flex', textAlign: 'left', width: '100%', padding: '10px', borderRadius: '5px' }}>
                         { !!this.props.currentUser.image ? <div className="profileImageContainer" style={{ width: '75px', height: '75px' }}><img src={ this.props.currentUser.image } alt="profile" class="profileImage" /></div>: <i className="bi-person-circle" style={{ fontSize: '30px', marginRight: '10px' }}></i> }
                         <div style={{ alignSelf: 'center' }}>
                             { this.props.currentUser.username }<br />
