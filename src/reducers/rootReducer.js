@@ -50,6 +50,10 @@ const reducer = (state = {
             idx = state.posts.findIndex(p => p.id === action.data.id)
             return { ...state, posts: [...state.posts.slice(0, idx), action.data, ...state.posts.slice(idx + 1)], loading: false }
 
+        case 'DELETE_POST':
+            idx = state.posts.findIndex(p => p.id === action.data.id)
+            return { ...state, posts: [...state.posts.slice(0, idx), ...state.posts.slice(idx + 1)] }
+
         case 'GET_COMMENTS':
             return { ...state, comments: action.comments, loading: false }
 

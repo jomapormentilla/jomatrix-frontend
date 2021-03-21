@@ -1,13 +1,21 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { deletePost } from '../../actions/postActions'
 
 class PostMenu extends React.Component {
+    handleOnClick = () => {
+        this.props.deletePost(sessionStorage.accessToken, this.props.post.id)
+        this.props.toggleModal()
+    }
+
     render(){
         return(
-            <div className="postMenu">
-                PostMenu
+            <div className="postMenu" style={{ textAlign: 'center', height: 'fit-content' }}>
+                <div style={{ color: 'red' }} onClick={ this.handleOnClick }>DELETE</div>
+                <div>CANCEL</div>
             </div>
         )
     }
 }
 
-export default PostMenu
+export default connect(null, { deletePost })(PostMenu)

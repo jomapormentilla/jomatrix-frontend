@@ -31,6 +31,25 @@ export const fetchPosts = (jwt, page) => {
     }
 }
 
+export const fetchAllPosts = (jwt) => {
+    const configObj = {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${ jwt }`
+        }
+    }
+
+    return (dispatch) => {
+        dispatch({ type: 'LOADING' })
+
+        fetch(url + '/posts', configObj)
+        .then(res => res.json())
+        .then(data => {
+            dispatch({ type: 'GET_POSTS', posts: data })
+        })
+    }
+}
+
 export const createPost = (jwt, data) => {
     const config = {
         bucketName: 'jomatrix',
@@ -113,6 +132,26 @@ export const unlikePost = (jwt, id) => {
         .then(res => res.json())
         .then(data => {
             dispatch({ type: 'LIKE_POST', data })
+        })
+    }
+}
+
+export const deletePost = (jwt, id) => {
+    const configObj = {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${ jwt }`
+        }
+    }
+
+    return (dispatch) => {
+        fetch(url + `/posts/` + id, configObj)
+        .then(res => res.json())
+        .then(data => {
+            dispatch({ type: 'DELETE_POST', data })
+            console.log(data)
         })
     }
 }

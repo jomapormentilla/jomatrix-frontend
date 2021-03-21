@@ -11,7 +11,7 @@ class PostLikes extends React.Component {
     render(){
         return(
             <div className="postLikes" style={{ justifyContent: 'flex-start' }}>
-                { this.renderLikes() }
+                { this.props.likes.length > 0 ? this.renderLikes() : <p style={{ textAlign: 'center' }}>This post does not have any likes.</p> }
             </div>
         )
     }

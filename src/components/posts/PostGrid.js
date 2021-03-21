@@ -1,23 +1,28 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { fetchAllPosts } from '../../actions/postActions'
 
 class PostGrid extends React.Component {
+    renderPosts = () => {
+        return this.props.posts
+        .filter(post => post.user_id === this.props.user.id)
+        .map(post => <div className="grid"><img src={ post.content } alt={`post-${ post.id }`} /></div>)
+    }
+
+    loadAllPosts = () => {
+        this.props.fetchAllPosts(sessionStorage.accessToken)
+    }
+
     render(){
         return(
-            <div style={{ display: 'flex', backgroundColor: "#fff", height: 'fit-content', borderRadius: '5px', width: '100%', marginTop: '15px', flexWrap: 'wrap' }}>
-                <div class="grid">1</div>
-                <div class="grid">2</div>
-                <div class="grid">3</div>
-                
-                <div class="grid">4</div>
-                <div class="grid">5</div>
-                <div class="grid">6</div>
-                
-                <div class="grid">7</div>
-                <div class="grid">8</div>
-                <div class="grid">9</div>
+            <div>
+                <div className="gridContainer">
+                    { this.renderPosts() }
+                </div>
+                { this.props.posts.length <= this.props.user.posts.length ? <button onClick={ this.loadAllPosts }>Load All</button> : null }
             </div>
         )
     }
 }
 
-export default PostGrid
+export default connect(null, { fetchAllPosts })(PostGrid)

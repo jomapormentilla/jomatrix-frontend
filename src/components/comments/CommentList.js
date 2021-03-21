@@ -25,7 +25,7 @@ class CommentList extends React.Component {
                             <span style={{ fontWeight: '900' }}><Link to={`/profile/${ this.author(this.props.post.user_id).username }`} style={{ textDecoration: 'none' }}>{ this.author(this.props.post.user_id).username }</Link></span> &nbsp;
                             <span style={{ color: '#777' }}>{ this.props.post.title }</span>
                             <br />
-                            <span style={{ color: '#777' }}>{ this.props.post.location }</span>
+                            <i className="bi-geo-alt"></i> <span style={{ color: '#777' }}>{ this.props.post.location }</span>
                             <br />
                             <span style={{ color: '#aaa' }} title={ moment(this.props.post.created_at).format("dddd, MMMM Do YYYY, h:mm:ss a") }>{ moment(this.props.post.created_at).fromNow() }</span>
                         </div>

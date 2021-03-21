@@ -19,7 +19,7 @@ class Post extends React.Component {
     render(){
         return(
             <div className="post">
-                <PostHeader post={ this.props.post } author={ this.props.author } />
+                <PostHeader post={ this.props.post } author={ this.props.author } currentUser={ this.props.currentUser } />
                 <PostContent post={ this.props.post } handleLikePost={ this.handleLikePost } handleUnlikePost={ this.handleUnlikePost } currentUser={ this.props.currentUser } />
                 <PostFooter post={ this.props.post } author={ this.props.author } handleLikePost={ this.handleLikePost } handleUnlikePost={ this.handleUnlikePost } currentUser={ this.props.currentUser } />
                 
