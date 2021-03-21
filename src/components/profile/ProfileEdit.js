@@ -28,7 +28,10 @@ class ProfileEdit extends React.Component {
     render(){
         return(
             <div className="profileEdit" style={{ padding: '10px' }}>
-                <h1 style={{ textAlign: 'center' }}><i className="bi-person-circle"></i> &nbsp; { this.props.currentUser.username }</h1>
+                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: '15px' }}>
+                    { !!this.props.currentUser.image ? <div className="profileImageContainer"><img src={ this.props.currentUser.image } alt={`profile`} className="profileImage" /></div> : <i className="bi-person-circle" style={{ marginRight: '10px', fontSize: '40px', alignSelf: 'flex-start' }}></i> }
+                    <h1>{ this.props.currentUser.username }</h1>
+                </div>
                 <form onSubmit={ this.handleOnSubmit }>
                     <label htmlFor="fname">First Name</label>
                     <input type="text" name="fname" value={ this.state.fname } onChange={ this.handleOnChange } />

@@ -29,7 +29,7 @@ const reducer = (state = {
 
         case 'UPDATE_USER':
             idx = state.users.findIndex(user => user.id === action.data.id)
-            return { ...state, users: [...state.users.slice(0, idx), action.data, ...state.users.slice(idx + 1)], loading: false }
+            return { ...state, users: [...state.users.slice(0, idx), action.data, ...state.users.slice(idx + 1)], currentUser: action.data, loading: false }
 
         case 'LOGIN_USER':
             return { ...state, loggedIn: action.loggedIn, currentUser: action.data, loading: false }

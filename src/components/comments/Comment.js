@@ -7,7 +7,7 @@ class Comment extends React.Component {
         return(
             <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '5px' }}>
                 <div style={{ display: 'flex', alignItems: 'center' }}>
-                    <i className="bi-person-circle" style={{ marginRight: '10px', fontSize: '30px', alignSelf: 'flex-start' }}></i>
+                    { !!this.props.author.image ? <div className="profileImageContainer"><img src={ this.props.author.image } alt={`profile-${ this.props.comment.id }`} className="profileImage" /></div> : <i className="bi-person-circle" style={{ marginRight: '10px', fontSize: '40px', alignSelf: 'flex-start' }}></i> }
 
                     <div style={{ display: 'flex', flexDirection: 'column' }}>
                         <div>

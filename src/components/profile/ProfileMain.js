@@ -22,7 +22,9 @@ class ProfileMain extends React.Component {
     render(){
         return(
             <div className="profileMain" style={{ marginBottom: '50px' }}>
-                <p>Profile info goes here</p>
+                <div>
+                { !!this.props.currentUser.image ? <div className="profileImageContainer" style={{ width: '100px', height: '100px' }}><img src={ this.props.currentUser.image } alt="profile" class="profileImage" /></div>: <i className="bi-person-circle" style={{ fontSize: '30px', marginRight: '10px' }}></i> }
+                </div>
                 <br /><hr /><br />
                 { this.props.currentUser === null ? 'Loading...' : <PostForm currentUser={ this.props.currentUser } /> }
                 <br /><hr />
