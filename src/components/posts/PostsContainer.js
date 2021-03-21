@@ -12,7 +12,6 @@ import ProfileMini from '../profile/ProfileMini'
 
 class PostsContainer extends React.Component {
     componentDidMount(){
-        console.log('PostsContainer')
         this.page = 0
         this.props.fetchPosts(sessionStorage.accessToken, this.page)
         this.props.fetchUsers(sessionStorage.accessToken)
@@ -30,7 +29,6 @@ class PostsContainer extends React.Component {
         if (window.innerHeight > document.querySelector('.App').getBoundingClientRect().bottom-1 && !this.props.stopInfiniteScroll) {
             this.page++
             this.props.fetchPosts(sessionStorage.accessToken, this.page)
-            console.log(this.props.stopInfiniteScroll)
         }
     }
 
@@ -50,7 +48,7 @@ class PostsContainer extends React.Component {
                     { this.props.loading || this.props.posts.length === 0 || this.props.users.length === 0 || this.props.currentUser === null ? <Loading /> : this.renderPosts() }
                     <PostsLoadMore />
                 </div>
-                { !!this.props.currentUser ? <ProfileMini currentUser={ this.props.currentUser } /> : 'Loading...' }
+                { !!this.props.currentUser ? <ProfileMini currentUser={ this.props.currentUser } /> : <Loading /> }
             </div>
         )
     }

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 class ProfileMini extends React.Component {
     render(){
@@ -15,7 +16,7 @@ class ProfileMini extends React.Component {
 
                     <div className="footerMini" style={{ marginTop: '10px', color: '#aaa', padding: '5px' }}>
                         <p>
-                            About
+                            <Link to="/about">About</Link>
                             &nbsp; - &nbsp; 
                             <a href="https://github.com/jomapormentilla?tab=repositories&q=jomatrix&type=&language=" target="_blank" rel="noreferrer">Github</a>
                             &nbsp; - &nbsp;

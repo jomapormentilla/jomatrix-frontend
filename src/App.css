@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css");
 
 body, html {
@@ -30,6 +31,7 @@ body, html {
         color: #fff;
         text-decoration: none;
         font-family: 'Great Vibes', cursive;
+        /* font-family: 'Special Elite', cursive; */
         font-size: 30px;
         padding: 5px 0px;
         margin-left: 10px;
@@ -142,7 +144,8 @@ body, html {
 .profile,
 .profileMini,
 .settings,
-.notFound {
+.notFound,
+.about {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -173,7 +176,8 @@ body, html {
 .chat > div,
 .profile > div,
 .settings > div,
-.notFound > div {
+.notFound > div,
+.about > div {
     margin-top: 75px;
 }
 

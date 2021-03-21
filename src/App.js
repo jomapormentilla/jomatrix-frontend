@@ -12,6 +12,7 @@ import ProfileContainer from './components/profile/ProfileContainer'
 import PostsContainer from './components/posts/PostsContainer'
 import Settings from './components/profile/Settings'
 import NotFound from './components/NotFound'
+import About from './components/About'
 
 class App extends React.Component {
   render(){
@@ -45,6 +46,8 @@ class App extends React.Component {
             <Route path="/settings" component={(routeInfo) => {
               return !sessionStorage.accessToken ? <Redirect to="/" /> : <Settings routeInfo={ routeInfo } />
             }} />
+
+            <Route exact path="/about" component={ About } />
 
             <Route path="/*" component={ NotFound } />
           </Switch>

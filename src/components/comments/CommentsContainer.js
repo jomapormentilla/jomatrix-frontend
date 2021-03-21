@@ -26,7 +26,7 @@ class CommentsContainer extends React.Component {
             <div className="commentsContainer">
                 { !!this.state.modal ? <Modal toggleModal={ this.toggleModal } component={ <CommentList comments={ this.comments() } users={ this.props.users } post={ this.props.post } />} /> : null }
                 <div style={{ padding: '10px' }}>
-                    <span onClick={ this.toggleModal } style={{ color: '#777', cursor: 'pointer' }}>View { this.comments().length } Comments</span>
+                    <span onClick={ this.toggleModal } style={{ color: '#777', cursor: 'pointer' }}>View { this.comments().length } { this.comments().length === 1 ? `Comment` : `Comments` }</span>
                 </div>
                 <CommentForm post={ this.props.post } />
             </div>
