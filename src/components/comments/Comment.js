@@ -23,6 +23,12 @@ class Comment extends React.Component {
         }
     }
 
+    renderLikes = () => {
+        if (this.props.comment.likes.length > 0) {
+            return this.props.comment.likes.length === 1 ? `${ this.props.comment.likes.length } Like` : `${ this.props.comment.likes.length } Likes`
+        }
+    }
+
     render(){
         return(
             <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '5px' }}>
@@ -34,7 +40,10 @@ class Comment extends React.Component {
                             <span style={{ fontWeight: '900' }}>{ !!this.props.author ? <Link to={ this.props.author.username } style={{ textDecoration: 'none', color: 'rgb(42, 7, 96)' }}>{ this.props.author.username }</Link> : null }</span> &nbsp;
                             <span style={{ color: '#777' }}>{ this.props.comment.content }</span>
                         </div>
-                        <span style={{ color: '#aaa' }}>{ moment(this.props.comment.created_at).fromNow() }</span>
+                        <div style={{ color: '#aaa' }}>
+                            <span>{ moment(this.props.comment.created_at).fromNow() }</span> &nbsp;
+                            { this.renderLikes() }
+                        </div>
                     </div>
                 </div>
                 { this.renderHearts() }
