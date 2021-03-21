@@ -14,7 +14,7 @@ class Comment extends React.Component {
     }
 
     renderHearts = () => {
-        let liked = this.props.comment.likes.find(like => like.user_id === this.props.currentUser.id)
+        let liked = this.props.comment.likes ? this.props.comment.likes.find(like => like.user_id === this.props.currentUser.id) : null
 
         if (!!liked) {
             return <i className="bi-heart-fill" style={{ marginRight: '5px', alignSelf: 'center', color: 'red', cursor: 'pointer' }} onClick={ (e)=>{this.handleUnlikeComment(e, liked.id)} }></i>
@@ -24,7 +24,7 @@ class Comment extends React.Component {
     }
 
     renderLikes = () => {
-        if (this.props.comment.likes.length > 0) {
+        if (this.props.comment.likes && this.props.comment.likes && this.props.comment.likes.length > 0) {
             return this.props.comment.likes.length === 1 ? `${ this.props.comment.likes.length } Like` : `${ this.props.comment.likes.length } Likes`
         }
     }

@@ -11,10 +11,6 @@ class CommentsContainer extends React.Component {
         modal: false
     }
 
-    componentDidMount(){
-        
-    }
-
     comments = () => {
         return this.props.comments.filter(comment => comment.commentable_id === this.props.post.id && comment.commentable_type === "Post" )
     }
