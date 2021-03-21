@@ -6,7 +6,7 @@ import { fetchComments } from '../../actions/commentActions'
 
 import Loading from '../../components/Loading'
 import Post from './Post'
-import PostSort from './PostSort'
+import ProfileShuffle from '../profile/ProfileShuffle'
 import PostsLoadMore from './PostsLoadMore'
 import ProfileMini from '../profile/ProfileMini'
 
@@ -44,7 +44,7 @@ class PostsContainer extends React.Component {
         return(
             <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <div className="postsContainer" style={{ marginBottom: '50px' }}>
-                    <PostSort />
+                    <ProfileShuffle users={ this.props.users } />
                     { this.props.loading || this.props.posts.length === 0 || this.props.users.length === 0 || this.props.currentUser === null ? <Loading /> : this.renderPosts() }
                     <PostsLoadMore />
                 </div>

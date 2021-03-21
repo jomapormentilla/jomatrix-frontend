@@ -171,7 +171,7 @@ body, html {
     margin-bottom: 50px;
 }
 
-.postSort,
+.profileShuffle,
 .profileMini,
 .chat > div,
 .profile > div,
@@ -182,7 +182,7 @@ body, html {
 }
 
 .postForm,
-.postSort,
+.profileShuffle,
 .postsLoadMore {
     height: fit-content;
 }
@@ -192,7 +192,7 @@ body, html {
     margin-top: 15px;
 }
 
-.postSort,
+.profileShuffle,
 .post,
 .postsLoadMore {
     /* border: solid 1px #aaa; */
