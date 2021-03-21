@@ -1,4 +1,6 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { updatePassword } from '../../actions/userActions'
 
 class ProfilePassword extends React.Component {
     state = {
@@ -22,7 +24,7 @@ class ProfilePassword extends React.Component {
 
     handleOnSubmit = e => {
         e.preventDefault()
-        console.log(this.state)
+        this.props.updatePassword(sessionStorage.accessToken, this.state)
         this.setState({
             id: '',
             oldPassword: '',
@@ -59,4 +61,4 @@ class ProfilePassword extends React.Component {
     }
 }
 
-export default ProfilePassword
+export default connect(null, { updatePassword })(ProfilePassword)

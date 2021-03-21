@@ -132,7 +132,7 @@ export const updateProfilePicture = (jwt, data) => {
 export const updatePassword = (jwt, data) => {
     const userInfo = {
         user: {
-            password: data.newPassword
+            password: data.newPassword,
         },
         old_password: data.oldPassword
     }
@@ -142,12 +142,13 @@ export const updatePassword = (jwt, data) => {
         headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json',
-            body: JSON.stringify(userInfo)
-        }
+            'Authorization': `Bearer ${ jwt }`,
+        },
+        body: JSON.stringify(userInfo)
     }
 
     return (dispatch) => {
-        fetch(url + `/users/` + data.id, configObj)
+        fetch(url + `/password/` + data.id, configObj)
         .then(res => res.json())
         .then(data => {
             dispatch({ type: 'UPDATE_USER', data })
