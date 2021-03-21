@@ -1,3 +1,5 @@
+import { uploadFile } from 'react-s3'
+import env from 'react-dotenv'
 import { url } from './baseUrl'
 
 export const fetchUsers = (jwt) => {
@@ -84,6 +86,45 @@ export const updateUser = (jwt, data) => {
         .then(res => res.json())
         .then(data => {
             dispatch({ type: 'UPDATE_USER', data })
+        })
+    }
+}
+
+export const updateProfilePicture = (jwt, data) => {
+    const config = {
+        bucketName: 'jomatrix',
+        region: 'us-east-1',
+        accessKeyId: env.AWS_ACCESS_KEY_ID,
+        secretAccessKey: env.AWS_SECRET_ACCESS_KEY
+    }
+
+
+    return (dispatch) => {
+        dispatch({ type: 'LOADING' })
+
+        uploadFile(data.image, config)
+        .then(resFile => {
+            const userInfo = {
+                user: {
+                    image: resFile.location
+                }
+            }
+
+            const configObj = {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'Authorization': `Bearer ${ jwt }`
+                },
+                body: JSON.stringify(userInfo)
+            }
+
+            fetch(url + `/users/` + data.id, configObj)
+            .then(res => res.json())
+            .then(data => {
+                dispatch({ type: 'UPDATE_USER', data })
+            })
         })
     }
 }

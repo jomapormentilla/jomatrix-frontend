@@ -25,14 +25,6 @@ class ProfileEdit extends React.Component {
         this.props.updateUser(sessionStorage.accessToken, this.state)
     }
 
-    componentWillUnmount(){
-        console.log('ProfileEdit Unmounting...')
-    }
-
-    componentDidUpdate(){
-        console.log('ProfileEdit Updated...')
-    }
-
     render(){
         return(
             <div className="profileEdit" style={{ padding: '10px' }}>

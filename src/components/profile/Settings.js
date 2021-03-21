@@ -7,6 +7,7 @@ import { fetchPosts } from '../../actions/postActions'
 import Loading from '../Loading'
 import ProfileNav from './ProfileNav'
 import ProfileEdit from './ProfileEdit'
+import ProfilePicture from './ProfilePicture'
 import Map from '../Map'
 
 const styles = {
@@ -33,9 +34,9 @@ class Settings extends React.Component {
                             return this.props.currentUser === null ? <Loading /> : <ProfileEdit currentUser={ this.props.currentUser } />
                         }} />
                         
-                        <Route exact path={`${ this.props.routeInfo.match.path }/image`}>
-                            Change Profile Picture
-                        </Route>
+                        <Route exact path={`${ this.props.routeInfo.match.path }/image`} component={(routeInfo) => {
+                            return <ProfilePicture routeInfo={ routeInfo } currentUser={ this.props.currentUser } />
+                        }} />
     
                         <Route exact path={`${ this.props.routeInfo.match.path }/password`}>
                             Password Change

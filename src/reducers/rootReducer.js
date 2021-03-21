@@ -29,7 +29,6 @@ const reducer = (state = {
 
         case 'UPDATE_USER':
             idx = state.users.findIndex(user => user.id === action.data.id)
-            debugger
             return { ...state, users: [...state.users.slice(0, idx), action.data, ...state.users.slice(idx + 1)], loading: false }
 
         case 'LOGIN_USER':
@@ -45,7 +44,7 @@ const reducer = (state = {
             return { ...state, posts: [...state.posts.concat(action.posts)], loading: false }
 
         case 'CREATE_POST':
-            return { ...state, posts: [action.data, ...state.posts]}
+            return { ...state, posts: [action.data, ...state.posts] }
 
         case 'LIKE_POST':
             idx = state.posts.findIndex(p => p.id === action.data.id)

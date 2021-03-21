@@ -1,6 +1,6 @@
 import { uploadFile } from 'react-s3'
-import { url } from './baseUrl'
 import env from 'react-dotenv'
+import { url } from './baseUrl'
 
 export const fetchPosts = (jwt, page) => {
     const configObj = {
@@ -51,8 +51,6 @@ export const createPost = (jwt, data) => {
                     location: data.location
                 }
             }
-
-            debugger
         
             const configObj = {
                 method: 'POST',
