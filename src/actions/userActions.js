@@ -128,3 +128,29 @@ export const updateProfilePicture = (jwt, data) => {
         })
     }
 }
+
+export const updatePassword = (jwt, data) => {
+    const userInfo = {
+        user: {
+            password: data.newPassword
+        },
+        old_password: data.oldPassword
+    }
+
+    const configObj = {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            body: JSON.stringify(userInfo)
+        }
+    }
+
+    return (dispatch) => {
+        fetch(url + `/users/` + data.id, configObj)
+        .then(res => res.json())
+        .then(data => {
+            dispatch({ type: 'UPDATE_USER', data })
+        })
+    }
+}

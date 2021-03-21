@@ -18,7 +18,6 @@ const ProfileNav = props => {
                 <Link to={`${url}/edit`}><li>Edit Profile</li></Link>
                 <Link to={`${url}/image`}><li>Change Image</li></Link>
                 <Link to={`${url}/password`}><li>Change Password</li></Link>
-                <Link to={`${url}/test`}><li>Test Profile</li></Link>
             </ul>
         </div>
     )

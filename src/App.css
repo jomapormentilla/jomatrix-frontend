@@ -208,7 +208,8 @@ body, html {
 
     .postForm input,
     .profileEdit input,
-    .profilePicture input {
+    .profilePicture input,
+    .profilePassword input {
         width: 100%;
         height: 100%;
         border: none;
@@ -218,7 +219,8 @@ body, html {
 
         .postForm button,
         .profileEdit button,
-        .profilePicture button {
+        .profilePicture button,
+        .profilePassword button {
             width: 100%;
             height: 30px;
             border: none;
@@ -230,19 +232,26 @@ body, html {
 
             .postForm button:active,
             .profileEdit button:active,
-            .profilePicture button:active {
+            .profilePassword button:active {
                 outline: 0;
             }
 
             .postForm button:hover,
             .profileEdit button:hover,
-            .profilePicture button:hover {
+            .profilePassword button:hover,
+            .profilePassword button:disabled {
                 background-color: rgb(123, 92, 167);
             }
 
-        .profileEdit input {
+        .profileEdit input,
+        .profilePassword input {
             border: solid 1px #ddd;
             margin-bottom: 15px;
+        }
+
+        .profileEdit label,
+        .profilePassword label {
+            margin-left: 5px;
         }
 
     .postForm input:focus,

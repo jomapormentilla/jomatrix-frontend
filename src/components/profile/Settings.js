@@ -8,7 +8,7 @@ import Loading from '../Loading'
 import ProfileNav from './ProfileNav'
 import ProfileEdit from './ProfileEdit'
 import ProfilePicture from './ProfilePicture'
-import Map from '../Map'
+import ProfilePassword from './ProfilePassword'
 
 const styles = {
     display: 'flex',
@@ -38,13 +38,9 @@ class Settings extends React.Component {
                             return <ProfilePicture routeInfo={ routeInfo } currentUser={ this.props.currentUser } />
                         }} />
     
-                        <Route exact path={`${ this.props.routeInfo.match.path }/password`}>
-                            Password Change
-                        </Route>
-    
-                        <Route path={`${ this.props.routeInfo.match.path }/:test`}>
-                            <Map />
-                        </Route>
+                        <Route exact path={`${ this.props.routeInfo.match.path }/password`} component={(routeInfo) => {
+                            return <ProfilePassword currentUser={ this.props.currentUser } />
+                        }} />
                     </Switch>
                 </div>
             </div>
