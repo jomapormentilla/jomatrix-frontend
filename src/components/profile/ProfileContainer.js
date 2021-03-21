@@ -11,8 +11,12 @@ import Loading from '../Loading'
 
 class ProfileContainer extends React.Component {
     componentDidMount(){
-        if (this.props.posts.length === 0) { this.props.fetchPosts(sessionStorage.accessToken) }
-        if (this.props.users.length === 0) { this.props.fetchUsers(sessionStorage.accessToken) }
+        if (this.props.posts.length === 0 && !this.props.loading) {this.props.fetchPosts(sessionStorage.accessToken, 0) }
+        if (this.props.users.length === 0 && !this.props.loading) { this.props.fetchUsers(sessionStorage.accessToken) }
+    }
+
+    getUser = () => {
+        return this.props.users
     }
 
     render(){
@@ -22,8 +26,7 @@ class ProfileContainer extends React.Component {
                     <Route path={`${ this.props.routeInfo.match.path }/:username`} component={ (routeInfo) => {
                         if (this.props.users.length !== 0) {
                             const user = this.props.users.find(user => user.username === routeInfo.match.params.username)
-        
-                            return !!user ? <ProfileUser user={ user } posts={ this.props.posts } /> : <NotFound />
+                            return !!user ? <ProfileUser user={ user } posts={ this.props.posts.filter(p => p.user_id === user.id) } users={ this.props.users } /> : <NotFound />
                         } else {
                             return <Loading />
                         }
@@ -36,6 +39,6 @@ class ProfileContainer extends React.Component {
     }
 }
 
-const mapStateToProps = state => ({ currentUser: state.currentUser, loggedIn: state.loggedIn, users: state.users, posts: state.posts })
+const mapStateToProps = state => ({ currentUser: state.currentUser, loggedIn: state.loggedIn, users: state.users, posts: state.posts, loading: state.loading })
 
 export default connect(mapStateToProps, { fetchUsers, fetchPosts })(ProfileContainer)

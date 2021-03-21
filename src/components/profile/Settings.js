@@ -1,8 +1,6 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { fetchUsers } from '../../actions/userActions'
-import { fetchPosts } from '../../actions/postActions'
 
 import Loading from '../Loading'
 import ProfileNav from './ProfileNav'
@@ -19,11 +17,6 @@ const styles = {
 }
 
 class Settings extends React.Component {
-    componentDidMount(){
-        if (this.props.posts.length === 0) { this.props.fetchPosts(sessionStorage.accessToken) }
-        if (this.props.users.length === 0) { this.props.fetchUsers(sessionStorage.accessToken) }
-    }
-    
     render(){
         return(
             <div className="settings">
@@ -35,11 +28,11 @@ class Settings extends React.Component {
                         }} />
                         
                         <Route exact path={`${ this.props.routeInfo.match.path }/image`} component={(routeInfo) => {
-                            return <ProfilePicture routeInfo={ routeInfo } currentUser={ this.props.currentUser } />
+                            return this.props.currentUser === null ? <Loading /> : <ProfilePicture routeInfo={ routeInfo } currentUser={ this.props.currentUser } />
                         }} />
     
                         <Route exact path={`${ this.props.routeInfo.match.path }/password`} component={(routeInfo) => {
-                            return <ProfilePassword currentUser={ this.props.currentUser } />
+                            return this.props.currentUser === null ? <Loading /> : <ProfilePassword currentUser={ this.props.currentUser } />
                         }} />
                     </Switch>
                 </div>
@@ -50,4 +43,4 @@ class Settings extends React.Component {
 
 const mapStateToProps = state => ({ currentUser: state.currentUser, users: state.users, posts: state.posts })
 
-export default connect(mapStateToProps, { fetchUsers, fetchPosts })(Settings)
+export default connect(mapStateToProps)(Settings)

@@ -22,7 +22,7 @@ class CommentsContainer extends React.Component {
     toggleModal = e => {
         this.setState(prevState => ({ 
             modal: !prevState.modal
-         }), ()=>console.log(this.state))
+         }))
     }
 
     render(){

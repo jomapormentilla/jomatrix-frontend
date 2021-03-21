@@ -12,6 +12,7 @@ import ProfileMini from '../profile/ProfileMini'
 
 class PostsContainer extends React.Component {
     componentDidMount(){
+        console.log('PostsContainer')
         this.page = 0
         this.props.fetchPosts(sessionStorage.accessToken, this.page)
         this.props.fetchUsers(sessionStorage.accessToken)
