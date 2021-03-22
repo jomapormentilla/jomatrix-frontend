@@ -28,7 +28,7 @@ class ProfileMain extends React.Component {
                         <div>
                             <span style={{ fontSize: '20px' }}>{ this.props.currentUser ? this.props.currentUser.username : 'Loading...' }</span><br /><br />
                             <span>{ this.props.currentUser ? this.props.currentUser.bio : 'Loading...' }</span><br />
-                            <span>{ this.myPosts().length } posts</span><br />
+                            <span>{ this.props.currentUser ? this.props.currentUser.posts.length : 'Loading...' } posts</span><br />
                         </div>
                     </div>
                 </div>

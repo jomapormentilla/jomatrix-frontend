@@ -44,7 +44,7 @@ class Header extends React.Component {
 
                 <div className="navItems">
                     <NavLink to="/feed"><i className="bi-house"></i></NavLink>
-                    <NavLink to="/chat"><i className="bi-chat"></i></NavLink>
+                    {/* <NavLink to="/chat"><i className="bi-chat"></i></NavLink> */}
                     <i className="bi-person-circle" onClick={ e => this.handleNavItemClick(e, 'profileNav') }></i>
                 </div>
             </div>

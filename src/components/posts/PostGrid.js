@@ -19,7 +19,7 @@ class PostGrid extends React.Component {
                 <div className="gridContainer">
                     { this.renderPosts() }
                 </div>
-                { this.props.posts.length <= this.props.user.posts.length ? <button onClick={ this.loadAllPosts }>Load All</button> : null }
+                { this.props.posts.length <= this.props.user.posts.length || this.props.posts.length === 10 ? <button onClick={ this.loadAllPosts }>Load All</button> : null }
             </div>
         )
     }

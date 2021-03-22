@@ -19,7 +19,7 @@ export const autoLogin = () => {
                 if (!!data.error) {
                     sessionStorage.removeItem('accessToken')
                 } else {
-                    dispatch({ type: 'LOGIN_USER', loggedIn: true, data: data.user.user })
+                    dispatch({ type: 'LOGIN_USER', loggedIn: true, data })
                 }
             })
         }
