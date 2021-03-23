@@ -11,8 +11,8 @@ class PostMenu extends React.Component {
     render(){
         return(
             <div className="postMenu" style={{ textAlign: 'center', height: 'fit-content' }}>
-                <div style={{ color: 'red' }} onClick={ this.handleOnClick }>DELETE</div>
-                <div>CANCEL</div>
+                <div style={{ color: 'red', cursor: 'pointer' }} onClick={ this.handleOnClick }>DELETE</div>
+                <div style={{ cursor: 'pointer' }} onClick={ () => {this.props.toggleModal()} }>CANCEL</div>
             </div>
         )
     }
