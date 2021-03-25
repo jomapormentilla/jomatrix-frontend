@@ -3,6 +3,8 @@ import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { createUser } from '../actions/userActions'
 
+import Loading from '../components/Loading'
+
 class Signup extends React.Component {
     state = {
         fname: '',
@@ -44,6 +46,7 @@ class Signup extends React.Component {
         return(
             <div className="signup">
                 <h1 className="logo" style={{ fontSize: '80px' }}>Jomatrix</h1>
+                { this.props.loading ? <Loading /> : 
                 <div style={{ display: 'flex', flexDirection: 'column', color: '#fff', padding: '10px', width: '350px' }}>
                     <form onSubmit={ this.handleOnSubmit }>
                         <input type="text" name="fname" onChange={ this.handleOnChange } placeholder="First Name" />
@@ -54,6 +57,7 @@ class Signup extends React.Component {
                         <button type="submit">Sign Up</button>
                     </form>
                 </div>
+                }
 
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', color: '#fff', width: '350px', borderTop: 'solid 1px #fff', marginTop: '15px', padding: '15px 0px', marginBottom: '200px' }}>
                     <NavLink to="/">Already have an account? Login here</NavLink>
@@ -63,4 +67,6 @@ class Signup extends React.Component {
     }
 }
 
-export default connect(null, { createUser })(Signup)
+const mapStateToProps = state => ({ loading: state.loading })
+
+export default connect(mapStateToProps, { createUser })(Signup)
