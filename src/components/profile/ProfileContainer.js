@@ -16,6 +16,7 @@ class ProfileContainer extends React.Component {
     }
 
     render(){
+        debugger
         return(
             <div className="profile">
                 <div>
