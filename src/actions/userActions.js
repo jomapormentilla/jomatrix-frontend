@@ -48,6 +48,8 @@ export const createUser = (data) => {
         .then(data => {
             if (!!data.error) {
                 console.log(data.error)
+                alert('Something went wrong!')
+                dispatch({ type: 'STOP_LOADING' })
             } else {
                 sessionStorage.setItem('accessToken', data.jwt)
                 dispatch({ type: 'CREATE_USER', user: data.user.user })

@@ -68,6 +68,9 @@ const reducer = (state = {
         case 'LOADING':
             return { ...state, loading: true }
 
+        case 'STOP_LOADING':
+            return { ...state, loading: false }
+
         case 'STOP_INFINITE_SCROLL':
             return { ...state, stopInfiniteScroll: true }
 

@@ -51,6 +51,7 @@ export const login = data => {
         .then(data => {
             if (!!data.error) {
                 alert('Invalid Credentials')
+                dispatch({ type: 'STOP_LOADING' })
             } else {
                 sessionStorage.setItem('accessToken', data.jwt)
                 dispatch({ type: 'LOGIN_USER', loggedIn: true, data: data.data })
