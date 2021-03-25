@@ -20,7 +20,7 @@ class CommentList extends React.Component {
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', paddingBottom: '10px' }}>
                     <img src={ this.props.post.content } alt={ this.props.post.content } style={{ width: '100px', marginRight: '15px' }} />
                     <div style={{ display: 'flex', alignSelf: 'flex-start' }}>
-                        <i className="bi-person-circle" style={{ fontSize: '30px', marginRight: '10px' }}></i>
+                        { !!this.author(this.props.post.user_id).image ? <div className="profileImageContainer"><img src={ this.author(this.props.post.user_id).image } alt="profile" class="profileImage" /></div>: <i className="bi-person-circle" style={{ fontSize: '30px', marginRight: '10px' }}></i> }
                         <div>
                             <span style={{ fontWeight: '900' }}><Link to={`/profile/${ this.author(this.props.post.user_id).username }`} style={{ textDecoration: 'none' }}>{ this.author(this.props.post.user_id).username }</Link></span> &nbsp;
                             <span style={{ color: '#777' }}>{ this.props.post.title }</span>
