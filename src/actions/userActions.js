@@ -1,5 +1,5 @@
 import { uploadFile } from 'react-s3'
-import env from 'react-dotenv'
+// import env from 'react-dotenv'
 import { url } from './baseUrl'
 
 export const fetchUsers = (jwt) => {
@@ -96,8 +96,8 @@ export const updateProfilePicture = (jwt, data) => {
     const config = {
         bucketName: 'jomatrix',
         region: 'us-east-1',
-        accessKeyId: env.AWS_ACCESS_KEY_ID,
-        secretAccessKey: env.AWS_SECRET_ACCESS_KEY
+        accessKeyId: process.env.AWS_ACCESS_KEY_ID_NETLIFY,
+        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY_NETLIFY
     }
 
 
