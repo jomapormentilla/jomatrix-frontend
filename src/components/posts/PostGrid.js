@@ -6,7 +6,7 @@ class PostGrid extends React.Component {
     renderPosts = () => {
         return this.props.posts
         .filter(post => post.user_id === this.props.user.id)
-        .map(post => <div className="grid"><img src={ post.content } alt={`post-${ post.id }`} /></div>)
+        .map(post => <div key={ post.id } className="grid"><img src={ post.content } alt={`post-${ post.id }`} /></div>)
     }
 
     loadAllPosts = () => {

@@ -42,7 +42,7 @@ class PostForm extends React.Component {
             <div className="postForm">
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '5px 10px' }}>
                     <div style={{ display: 'flex', alignItems: 'center' }}>
-                    { !!this.props.currentUser.image ? <div className="profileImageContainer"><img src={ this.props.currentUser.image } alt={`profile-${ this.props.currentUser.id }`} class="profileImage" /></div>: <i className="bi-person-circle" style={{ fontSize: '30px', marginRight: '10px' }}></i> }
+                    { !!this.props.currentUser.image ? <div className="profileImageContainer"><img src={ this.props.currentUser.image } alt={`profile-${ this.props.currentUser.id }`} className="profileImage" /></div>: <i className="bi-person-circle" style={{ fontSize: '30px', marginRight: '10px' }}></i> }
                         <div>
                             { this.props.currentUser.first_name } { this.props.currentUser.last_name }
                             <br />

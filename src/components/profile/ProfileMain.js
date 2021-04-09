@@ -23,7 +23,7 @@ class ProfileMain extends React.Component {
         return(
             <div className="profileMain" style={{ marginBottom: '50px' }}>
                 <div style={{ display: 'flex' }}>
-                    { this.props.currentUser && !!this.props.currentUser.image ? <div className="profileImageContainer" style={{ width: '100px', height: '100px' }}><img src={ this.props.currentUser.image } alt="profile" class="profileImage" /></div>: <i className="bi-person-circle" style={{ fontSize: '30px', marginRight: '10px' }}></i> }
+                    { this.props.currentUser && !!this.props.currentUser.image ? <div className="profileImageContainer" style={{ width: '100px', height: '100px' }}><img src={ this.props.currentUser.image } alt="profile" className="profileImage" /></div>: <i className="bi-person-circle" style={{ fontSize: '30px', marginRight: '10px' }}></i> }
                     <div style={{ marginLeft: '15px' }}>
                         <div>
                             <span style={{ fontSize: '20px' }}>{ this.props.currentUser ? this.props.currentUser.username : 'Loading...' }</span><br /><br />

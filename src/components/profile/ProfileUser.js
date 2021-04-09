@@ -7,7 +7,7 @@ class ProfileUser extends React.Component {
         return(
             <div className="profileMain" style={{ marginBottom: '50px', width: '500px' }}>
                 <div style={{ display: 'flex' }}>
-                    { !!this.props.user.image ? <div className="profileImageContainer" style={{ width: '100px', height: '100px' }}><img src={ this.props.user.image } alt="profile" class="profileImage" /></div>: <i className="bi-person-circle" style={{ fontSize: '30px', marginRight: '10px' }}></i> }
+                    { !!this.props.user.image ? <div className="profileImageContainer" style={{ width: '100px', height: '100px' }}><img src={ this.props.user.image } alt="profile" className="profileImage" /></div>: <i className="bi-person-circle" style={{ fontSize: '30px', marginRight: '10px' }}></i> }
                     <div style={{ marginLeft: '15px' }}>
                         <div>
                             <span style={{ fontSize: '20px' }}>{ this.props.user.username }</span><br /><br />

@@ -23,7 +23,7 @@ class ProfileShuffle extends React.Component {
         return(
             <div className="profileShuffle" style={{ background: 'none', overflowX: 'scroll' }}>
                 <div style={{ display: 'flex', alignItems: 'center' }}>
-                    { this.shuffleUsers().map(user => !!user ? <Link to={`/profile/${ user.username }`} style={{ textDecoration: 'none', color: '#000' }}><div style={{ display: 'flex', flexDirection: 'column', alignItems: 'space-between', justifyContent: 'center', width: '45px', marginLeft: '10px', marginRight: '10px', overflow: 'hidden' }}>{ !!user.image ? <div className="profileImageContainer"><img src={ user.image } alt="profile" class="profileImage" /></div> : <i className="bi-person-circle" style={{ fontSize: '40px', marginRight: '10px', padding: '0px' }}></i> }<span>{ user.username }</span></div></Link> : null)}
+                    { this.shuffleUsers().map(user => !!user ? <Link to={`/profile/${ user.username }`} key={ user.id } style={{ textDecoration: 'none', color: '#000' }}><div style={{ display: 'flex', flexDirection: 'column', alignItems: 'space-between', justifyContent: 'center', width: '45px', marginLeft: '10px', marginRight: '10px', overflow: 'hidden' }}>{ !!user.image ? <div className="profileImageContainer"><img src={ user.image } alt="profile" className="profileImage" /></div> : <i className="bi-person-circle" style={{ fontSize: '40px', marginRight: '10px', padding: '0px' }}></i> }<span>{ user.username }</span></div></Link> : null)}
                 </div>
             </div>
         )
