@@ -1,5 +1,4 @@
 import { uploadFile } from 'react-s3'
-// import env from 'react-dotenv'
 import { url } from './baseUrl'
 
 export const fetchUsers = (jwt) => {
