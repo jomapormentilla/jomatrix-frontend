@@ -13,12 +13,14 @@ import PostsContainer from './components/posts/PostsContainer'
 import Settings from './components/profile/Settings'
 import NotFound from './components/NotFound'
 import About from './components/About'
+import Alert from './components/Alert'
 
 class App extends React.Component {
   render(){
     this.props.autoLogin()
     return (
       <div className="App">
+        { !!this.props.alert ? <Alert alert={ this.props.alert } /> : null }
         <Router>
           { !!sessionStorage.accessToken ? <Header /> : null }
           <Switch>
@@ -58,7 +60,8 @@ class App extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  loggedIn: state.loggedIn
+  loggedIn: state.loggedIn,
+  alert: state.alert
 })
 
 export default connect(mapStateToProps, { autoLogin })(App)

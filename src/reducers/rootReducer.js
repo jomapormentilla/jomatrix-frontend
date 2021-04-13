@@ -16,7 +16,8 @@ const reducer = (state = {
     loading: false,
     loggedIn: false,
     currentUser: null,
-    stopInfiniteScroll: false
+    stopInfiniteScroll: false,
+    alert: null
 
 }, action) => {
     let idx
@@ -73,6 +74,12 @@ const reducer = (state = {
 
         case 'STOP_INFINITE_SCROLL':
             return { ...state, stopInfiniteScroll: true }
+
+        case 'RENDER_ALERT':
+            return { ...state, alert: action.data }
+
+        case 'CLEAR_ALERT':
+            return { ...state, alert: null }
 
         default:
             return state
