@@ -2,11 +2,13 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { fetchAllPosts } from '../../actions/postActions'
 
+import PostMini from './PostMini'
+
 class PostGrid extends React.Component {
     renderPosts = () => {
         return this.props.posts
         .filter(post => post.user_id === this.props.user.id)
-        .map(post => <div key={ post.id } className="grid"><img src={ post.content } alt={`post-${ post.id }`} /></div>)
+        .map(post => <PostMini key={ post.id } post={ post } />)
     }
 
     loadAllPosts = () => {
