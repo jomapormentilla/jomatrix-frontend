@@ -76,10 +76,10 @@ const reducer = (state = {
             return { ...state, stopInfiniteScroll: true }
 
         case 'RENDER_ALERT':
-            return { ...state, alert: action.data }
+            return { ...state, alert: action.data.message, alertType: action.data.type }
 
         case 'CLEAR_ALERT':
-            return { ...state, alert: null }
+            return { ...state, alert: null, alertType: null }
 
         default:
             return state

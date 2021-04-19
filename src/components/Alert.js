@@ -14,9 +14,21 @@ class Alert extends React.Component {
         this.props.clearAlert()
     }
 
+    backgroundColor = () => {
+        console.log(this.props.type)
+        switch (this.props.type) {
+            case 'success':
+                return 'green'
+            case 'danger':
+                return 'red'
+            default:
+                return 'blue'
+        }
+    }
+
     render(){
         return(
-            <div className="alert">
+            <div className="alert" style={{ backgroundColor: this.backgroundColor() }}>
                 <span>{ this.props.alert }</span>
                 <i className="bi-x" style={{ fontSize: '20px' }} onClick={ this.handleOnClick  }></i>
             </div>

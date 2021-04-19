@@ -49,7 +49,7 @@ export const createUser = (data) => {
             if (!!data.error) {
                 console.log(data.error)
                 // alert('Something went wrong!')
-                dispatch({ type: 'RENDER_ALERT', data: 'Something went wrong!' })
+                dispatch({ type: 'RENDER_ALERT', data: { message: 'Something went wrong!', type: 'danger' } })
                 dispatch({ type: 'STOP_LOADING' })
             } else {
                 sessionStorage.setItem('accessToken', data.jwt)
@@ -88,7 +88,7 @@ export const updateUser = (jwt, data) => {
         fetch(url + `/users/` + data.id, configObj)
         .then(res => res.json())
         .then(data => {
-            dispatch({ type: 'RENDER_ALERT', data: 'Profile Details Updated' })
+            dispatch({ type: 'RENDER_ALERT', data: { message: 'Profile Details Updated', type: 'success' } })
             dispatch({ type: 'UPDATE_USER', data })
         })
     }
@@ -127,7 +127,7 @@ export const updateProfilePicture = (jwt, data) => {
             fetch(url + `/users/` + data.id, configObj)
             .then(res => res.json())
             .then(data => {
-                dispatch({ type: 'RENDER_ALERT', data: 'Profile Image Updated' })
+                dispatch({ type: 'RENDER_ALERT', data: { message: 'Profile Image Updated', type: 'success' } })
                 dispatch({ type: 'UPDATE_USER', data })
             })
         })
@@ -156,7 +156,7 @@ export const updatePassword = (jwt, data) => {
         fetch(url + `/password/` + data.id, configObj)
         .then(res => res.json())
         .then(data => {
-            dispatch({ type: 'RENDER_ALERT', data: 'Password Updated' })
+            dispatch({ type: 'RENDER_ALERT', data: { message: 'Password Updated', type: 'success' } })
             dispatch({ type: 'UPDATE_USER', data })
         })
     }

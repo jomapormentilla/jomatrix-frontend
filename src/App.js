@@ -20,7 +20,7 @@ class App extends React.Component {
     this.props.autoLogin()
     return (
       <div className="App">
-        { !!this.props.alert ? <Alert alert={ this.props.alert } /> : null }
+        { !!this.props.alert ? <Alert alert={ this.props.alert } type={ this.props.alertType } /> : null }
         <Router>
           { !!sessionStorage.accessToken ? <Header /> : null }
           <Switch>
@@ -61,7 +61,8 @@ class App extends React.Component {
 
 const mapStateToProps = state => ({
   loggedIn: state.loggedIn,
-  alert: state.alert
+  alert: state.alert,
+  alertType: state.alertType
 })
 
 export default connect(mapStateToProps, { autoLogin })(App)
