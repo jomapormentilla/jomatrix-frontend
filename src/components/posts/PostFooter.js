@@ -32,7 +32,7 @@ class PostFooter extends React.Component {
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                     <div style={{ padding: '5px 10px' }}>
                         { this.renderHearts() }
-                        <i className="bi-chat" style={{ fontSize: '22px', marginRight: '10px' }}></i>
+                        {/* <i className="bi-chat" style={{ fontSize: '22px', marginRight: '10px' }}></i> */}
                     </div>
                     <div style={{ padding: '10px', fontSize: '12px', fontWeight: '900', alignSelf: 'center', cursor: 'pointer' }} onClick={ this.toggleModal }>
                         { this.props.post.likes.length }
