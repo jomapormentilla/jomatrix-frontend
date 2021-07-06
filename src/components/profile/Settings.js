@@ -21,7 +21,7 @@ class Settings extends React.Component {
         return(
             <div className="settings">
                 <div style={ styles }>
-                    <ProfileNav />
+                    <ProfileNav currentUser={ this.props.currentUser } />
                     <Switch>
                         <Route exact path={`${ this.props.routeInfo.match.path }/edit`} component={() => {
                             return this.props.currentUser === null ? <Loading /> : <ProfileEdit currentUser={ this.props.currentUser } />

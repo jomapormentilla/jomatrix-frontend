@@ -40,7 +40,7 @@ class ProfileEdit extends React.Component {
                     <input type="text" name="lname" value={ this.state.lname } onChange={ this.handleOnChange } />
 
                     <label htmlFor="email">Email</label>
-                    <input type="text" name="email" value={ this.state.email } onChange={ this.handleOnChange } />
+                    { this.props.currentUser.id === 16 ? <div><input disabled value="Test User cannot change this field." /></div> : <input type="text" name="email" value={ this.state.email } onChange={ this.handleOnChange } />}
                     
                     <label htmlFor="username">Username</label>
                     <input type="text" name="username" value={ this.state.username } onChange={ this.handleOnChange } />

@@ -11,7 +11,8 @@ class Signup extends React.Component {
         lname: '',
         email: '',
         password: '',
-        confirm: ''
+        confirm: '',
+        test: false
     }
 
     handleOnChange = e => {
@@ -42,20 +43,36 @@ class Signup extends React.Component {
         }
     }
 
+    handleOnClick = e => {
+        this.setState(prevState => ({
+            ...prevState,
+            test: !prevState.test
+        }))
+    }
+
     render(){
         return(
             <div className="signup">
                 <h1 className="logo" style={{ fontSize: '80px' }}>Jomatrix</h1>
                 { this.props.loading ? <Loading /> : 
                 <div style={{ display: 'flex', flexDirection: 'column', color: '#fff', padding: '10px', width: '350px' }}>
-                    <form onSubmit={ this.handleOnSubmit }>
+                    {/* <form onSubmit={ this.handleOnSubmit }>
                         <input type="text" name="fname" onChange={ this.handleOnChange } placeholder="First Name" />
                         <input type="text" name="lname" onChange={ this.handleOnChange } placeholder="Last Name" />
                         <input type="emailt" name="email" onChange={ this.handleOnChange } placeholder="Email" />
                         <input type="password" name="password" onChange={ this.handleOnChange } placeholder="Password" />
                         <input type="password" name="confirm" onChange={ this.handleOnChange } placeholder="Confirm Password" />
                         <button type="submit">Sign Up</button>
-                    </form>
+                    </form> */}
+
+                    <div style={{ background: "#fff", color: "#000", padding: '10px 15px' }}>
+                        <h2 style={{ textAlign: 'center' }}>Thanks for visitng Jomatrix!</h2>
+                        <h3>Unforunately, due to limitations on Heroku, the Postgres database no longer supports new users. However, if you would like to login and take a look around, you can use the following credentials:</h3>
+                        <div style={{ fontFamily: 'courier', fontSize: '15px' }}>
+                            <p>Username: <strong style={{ color: `rgb(27, 10, 94)`}}>testuser@email.com</strong></p>
+                            <p>Password: <strong style={{ color: `rgb(27, 10, 94)`}} onClick={ this.handleOnClick }>{ !!this.state.test ? `password123` : `***********` }</strong></p>
+                        </div>
+                    </div>
                 </div>
                 }
 
